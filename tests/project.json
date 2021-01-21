@@ -47,6 +47,12 @@
                         "fromProperty": "Value",
                         "toId": "b4d194bc-1ec6-7aac-5470-d84770905409",
                         "toProperty": "value"
+                    },
+                    {
+                        "fromId": "6482840a-19b4-9a6f-7ba1-e9dce860889a",
+                        "fromProperty": "savedValue",
+                        "toId": "e5e12210-09c2-f4fc-2abf-3505c29d1e3c",
+                        "toProperty": "Value"
                     }
                 ],
                 "roots": [
@@ -189,8 +195,8 @@
                                                     {
                                                         "id": "8028aaed-4187-0e84-ff58-53148726c06d",
                                                         "type": "/#Form Kit/Radio Button",
-                                                        "x": 432.0556189647026,
-                                                        "y": 824.5300922116428,
+                                                        "x": 20,
+                                                        "y": 128,
                                                         "parameters": {
                                                             "Label": "No",
                                                             "Name": "Test",
@@ -313,7 +319,9 @@
                         "type": "String",
                         "x": 124.44040591186157,
                         "y": 786.5094332116554,
-                        "parameters": {},
+                        "parameters": {
+                            "value": "yes"
+                        },
                         "ports": [],
                         "dynamicports": [],
                         "children": []
@@ -2541,12 +2549,6 @@
                     },
                     {
                         "fromId": "ba131b5a-ec62-834f-42b2-f4e363dad3b2",
-                        "fromProperty": "Name",
-                        "toId": "d2550a49-d1c3-7bdc-aa47-51777cfb49e4",
-                        "toProperty": "name"
-                    },
-                    {
-                        "fromId": "ba131b5a-ec62-834f-42b2-f4e363dad3b2",
                         "fromProperty": "Value",
                         "toId": "d2550a49-d1c3-7bdc-aa47-51777cfb49e4",
                         "toProperty": "value"
@@ -2565,7 +2567,7 @@
                     },
                     {
                         "fromId": "d2550a49-d1c3-7bdc-aa47-51777cfb49e4",
-                        "fromProperty": "checkedChanged",
+                        "fromProperty": "checked",
                         "toId": "f74287af-756f-f91e-e14b-efd660709a22",
                         "toProperty": "visible"
                     }
@@ -3027,6 +3029,12 @@
                         "toProperty": "text"
                     },
                     {
+                        "fromId": "13e2393f-8205-4cf0-9f7f-a827824931eb",
+                        "fromProperty": "Value",
+                        "toId": "b66b7246-8217-e05a-f3c3-55ecc740d450",
+                        "toProperty": "value"
+                    },
+                    {
                         "fromId": "b66b7246-8217-e05a-f3c3-55ecc740d450",
                         "fromProperty": "valueChanged",
                         "toId": "7f1c067d-0a75-6209-83b1-5d3b8bed112b",
@@ -3082,8 +3090,8 @@
                     {
                         "id": "13e2393f-8205-4cf0-9f7f-a827824931eb",
                         "type": "Component Inputs",
-                        "x": -232,
-                        "y": 48.5,
+                        "x": -212,
+                        "y": 71.5,
                         "parameters": {},
                         "ports": [
                             {
@@ -3093,6 +3101,14 @@
                                     "name": "*"
                                 },
                                 "index": 1
+                            },
+                            {
+                                "name": "Value",
+                                "plug": "output",
+                                "type": {
+                                    "name": "*"
+                                },
+                                "index": 2
                             }
                         ],
                         "dynamicports": [],
