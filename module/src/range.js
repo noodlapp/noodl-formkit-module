@@ -1,30 +1,35 @@
 import Noodl from '@noodl/noodl-sdk';
 import Utils from './utils';
-import RadioButtonContext from './radiobuttoncontext';
 
 import {
 	useEffect,
-    useState,
-    useContext,
+	useState,
 } from 'react';
 
 // --------------------------------------------------------------------------------------
-// RadioButton
+// Range
 // --------------------------------------------------------------------------------------
-function RadioButton(props) {
-    const radioButtonGroup = useContext(RadioButtonContext)
+function Range(props) {
+    const [value, setValue] = useState(props.value);
 
-    // On mount
+    // Report initial values when mounted
 	useEffect(() => {
+		setValue(!!props.value);
+        props.valueChanged && props.valueChanged(!!props.value);
+
         props.focusChanged && props.focusChanged(false);
         props.hoverChanged && props.hoverChanged(false);
-    }, []);
+	}, []);
 
-    props.checkedChanged && props.checkedChanged(radioButtonGroup?(radioButtonGroup.selected === props.value):false);
-    return <input className="ndl-formkit-radiobutton" type="radio" name={radioButtonGroup?radioButtonGroup.name:undefined} {...props} disabled={!props.enabled} 
-        checked={radioButtonGroup?(radioButtonGroup.selected === props.value):false}
+	useEffect(() => {
+			setValue(props.value);
+			props.valueChanged && props.valueChanged(props.value);
+    }, [props.value]);
+
+    return <input className="ndl-formkit-range" type="range" {...props} value={value} disabled={!props.enabled} 
         onChange = {e => {
-            radioButtonGroup && radioButtonGroup.checkedChanged && radioButtonGroup.checkedChanged(props.value);
+            setValue(e.target.value);
+            props.valueChanged && props.valueChanged(e.target.value);
         }}
 		onFocus={e => props.enabled && props.focusChanged && props.focusChanged(true)}
         onBlur={e => props.enabled && props.focusChanged && props.focusChanged(false)}
@@ -33,22 +38,27 @@ function RadioButton(props) {
         ></input>;
 }
 
-var RadioButtonNode = {
-	name: 'net.noodl.formkit.radiobutton',
-	displayName:'Radio Button',
+var RangeNode = {
+	name: 'net.noodl.formkit.range',
+	displayName:'Range',
 	category: 'Form Kit',
 	initialize() {
         this.props.sizeMode = 'explicit';
         this.props.id = this.outputs.controlId = 'input-' + Utils.guid();
-        this.props.enabled = this.outputs.enabled = true;
-        this.props.checkedChanged = (value) => {
+        this.props.enabled = this.outputs.enabled = (this.inputs.enabled===undefined)?true:this.inputs.enabled;
+        this.outputs.value = this.props.value;
+        this.props.valueChanged = (value) => {
+            const min = (this.props.min || 0)
+            const max = (this.props.max || 100)
+            const valuePercent = Math.floor( (value - min) / (max - min) * 100 )
             this.setOutputs({
-                checked:value
+                value:value,
+                valuePercent:valuePercent
             })
         }
 	},
 	getReactComponent() {
-		return RadioButton;
+		return Range
 	},
 	frame:{
 		margins:true,
@@ -64,16 +74,20 @@ var RadioButtonNode = {
             this.setOutputs({
                 enabled:value
             })
+            this.forceUpdate()
         }
     },
     outputs:{
         controlId:{type:'string',displayName:'Control Id',group:'General'},
         enabled: {type:'boolean', displayName:'Enabled',group:'States'},
-        checked: {type:'boolean', displayName:'Checked',group:'States'},
+        value: {type:'number', displayName:'Value',group:'General'},
+        valuePercent: {type:'number', displayName:'Value Percent',group:'General'},
     },
 	inputProps: {
-      //  checked: {type:'boolean', displayName:'Checked',group:'General'},
-        value: {type:'string', displayName:'Value',group:'General'},
+        value: {type:'number', displayName:'Value',group:'General'},
+        min: {type:'number', displayName:'Min',group:'General',default:0},
+        max: {type:'number', displayName:'Max',group:'General',default:100},
+        step: {type:'number', displayName:'Step',group:'General',default:1},
 		width: {
 			index: 11,
 			group: 'Dimensions',
@@ -98,14 +112,13 @@ var RadioButtonNode = {
 		}
 	},
 	outputProps: {
-		//checkedChanged: {type: 'boolean', displayName: 'Checked', group:'States'},
         focusChanged: {type: 'boolean', displayName: 'Focused', group:'States'},
-        hoverChanged: {type: 'boolean', displayName: 'Hover', group:'States'}
+        hoverChanged: {type: 'boolean', displayName: 'Hover', group:'States'},
 	}
 }
 
-Utils.addVisibilityUtils(RadioButtonNode)
-RadioButtonNode = Noodl.defineReactNode(RadioButtonNode);
+Utils.addVisibilityUtils(RangeNode)
+RangeNode = Noodl.defineReactNode(RangeNode);
 
-export default RadioButtonNode;
+export default RangeNode;
 

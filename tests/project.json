@@ -278,6 +278,27 @@
                                         ]
                                     },
                                     {
+                                        "id": "9103bc78-519f-c9be-de9c-f15630cbd564",
+                                        "type": "net.noodl.formkit.fieldset",
+                                        "x": 392.3832736725891,
+                                        "y": 1154.6567523236108,
+                                        "parameters": {},
+                                        "ports": [],
+                                        "dynamicports": [],
+                                        "children": [
+                                            {
+                                                "id": "b4292c0b-e2e7-680e-b297-18b0b5a687eb",
+                                                "type": "/#Form Kit/Slider",
+                                                "x": 20,
+                                                "y": 46,
+                                                "parameters": {},
+                                                "ports": [],
+                                                "dynamicports": [],
+                                                "children": []
+                                            }
+                                        ]
+                                    },
+                                    {
                                         "id": "478b6946-c354-ea58-9013-f1b1f38a612a",
                                         "type": "/#Form Kit/Button",
                                         "x": 20,
@@ -3125,11 +3146,11 @@
             "metadata": {
                 "canvasPos": {
                     "x": 441.40766041863367,
-                    "y": 291.1705993581482
+                    "y": 291.17059935814825
                 },
                 "canvasSize": {
-                    "width": "153px",
-                    "height": "121px"
+                    "width": "365px",
+                    "height": "auto"
                 }
             }
         },
@@ -3163,7 +3184,9 @@
                         "type": "Group",
                         "x": 0,
                         "y": 0,
-                        "parameters": {},
+                        "parameters": {
+                            "sizeMode": "contentHeight"
+                        },
                         "ports": [],
                         "dynamicports": [],
                         "children": [
@@ -3253,8 +3276,242 @@
             },
             "metadata": {
                 "canvasPos": {
-                    "x": 443.98619128239767,
-                    "y": 412.3620147320567
+                    "x": 441.45916152790653,
+                    "y": 478.0647883488263
+                }
+            }
+        },
+        {
+            "name": "/#Form Kit/Date Input",
+            "id": "6374134d-92ac-50a6-3cb0-9a7aa87015af",
+            "graph": {
+                "connections": [],
+                "roots": [
+                    {
+                        "id": "3b9989b0-06f1-a7e3-ce5a-27651a163621",
+                        "type": "Group",
+                        "x": 0,
+                        "y": 0,
+                        "parameters": {},
+                        "ports": [],
+                        "dynamicports": [],
+                        "children": [
+                            {
+                                "id": "19a079f6-8bb8-34a2-9ef7-fa246d91bca1",
+                                "type": "net.noodl.formkit.dateinput",
+                                "x": 77.5,
+                                "y": 14.5,
+                                "parameters": {},
+                                "ports": [],
+                                "dynamicports": [],
+                                "children": []
+                            }
+                        ]
+                    }
+                ]
+            },
+            "metadata": {
+                "canvasPos": {
+                    "x": 952.5811075044962,
+                    "y": 416.95990949103697
+                }
+            }
+        },
+        {
+            "name": "/#Form Kit/Slider",
+            "id": "75618c4d-13af-bc18-8493-52f4b360dfe7",
+            "graph": {
+                "connections": [
+                    {
+                        "fromId": "9db34e58-07c5-5c78-48a0-32a75cb7f308",
+                        "fromProperty": "valuePercent",
+                        "toId": "0c737406-6067-3e67-d36d-8cf6fcd87222",
+                        "toProperty": "width"
+                    },
+                    {
+                        "fromId": "9db34e58-07c5-5c78-48a0-32a75cb7f308",
+                        "fromProperty": "value",
+                        "toId": "bc17c0c5-f9ac-ba36-482e-2eec15ab1c7d",
+                        "toProperty": "V"
+                    },
+                    {
+                        "fromId": "bfaf0e81-dbed-1771-901b-14b31359a39f",
+                        "fromProperty": "Value",
+                        "toId": "9db34e58-07c5-5c78-48a0-32a75cb7f308",
+                        "toProperty": "value"
+                    },
+                    {
+                        "fromId": "bfaf0e81-dbed-1771-901b-14b31359a39f",
+                        "fromProperty": "Max",
+                        "toId": "637a5b0f-168b-c195-29e0-eb39d203a491",
+                        "toProperty": "value"
+                    },
+                    {
+                        "fromId": "637a5b0f-168b-c195-29e0-eb39d203a491",
+                        "fromProperty": "savedValue",
+                        "toId": "bc17c0c5-f9ac-ba36-482e-2eec15ab1c7d",
+                        "toProperty": "Max"
+                    },
+                    {
+                        "fromId": "637a5b0f-168b-c195-29e0-eb39d203a491",
+                        "fromProperty": "savedValue",
+                        "toId": "9db34e58-07c5-5c78-48a0-32a75cb7f308",
+                        "toProperty": "max"
+                    },
+                    {
+                        "fromId": "bc17c0c5-f9ac-ba36-482e-2eec15ab1c7d",
+                        "fromProperty": "formatted",
+                        "toId": "919d54cc-22ee-631b-e9bc-ea352176edd3",
+                        "toProperty": "text"
+                    }
+                ],
+                "roots": [
+                    {
+                        "id": "ae58622b-4550-dc75-c140-2e74ad9e4f35",
+                        "type": "Group",
+                        "x": 0,
+                        "y": 0,
+                        "parameters": {},
+                        "ports": [],
+                        "dynamicports": [],
+                        "children": [
+                            {
+                                "id": "0c737406-6067-3e67-d36d-8cf6fcd87222",
+                                "type": "Group",
+                                "x": 20,
+                                "y": 46,
+                                "parameters": {
+                                    "position": "absolute",
+                                    "backgroundColor": "#424242",
+                                    "height": {
+                                        "value": 20,
+                                        "unit": "px"
+                                    },
+                                    "alignY": "center"
+                                },
+                                "ports": [],
+                                "dynamicports": [],
+                                "children": [
+                                    {
+                                        "id": "40dac51a-1f69-2058-0a25-3c2d5f8c6b03",
+                                        "type": "Circle",
+                                        "x": 20,
+                                        "y": 82,
+                                        "parameters": {
+                                            "size": 30,
+                                            "position": "absolute",
+                                            "fillColor": "#6A55A6",
+                                            "alignX": "right",
+                                            "transformX": {
+                                                "value": 15,
+                                                "unit": "px"
+                                            },
+                                            "alignY": "center"
+                                        },
+                                        "ports": [],
+                                        "dynamicports": [],
+                                        "children": []
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "9db34e58-07c5-5c78-48a0-32a75cb7f308",
+                                "type": "net.noodl.formkit.range",
+                                "label": "Hidden native",
+                                "x": 20,
+                                "y": 174,
+                                "parameters": {
+                                    "height": {
+                                        "value": 50,
+                                        "unit": "px"
+                                    },
+                                    "opacity": 0
+                                },
+                                "ports": [],
+                                "dynamicports": [],
+                                "children": []
+                            },
+                            {
+                                "id": "919d54cc-22ee-631b-e9bc-ea352176edd3",
+                                "type": "Text",
+                                "x": 85.5,
+                                "y": 26,
+                                "parameters": {},
+                                "ports": [],
+                                "dynamicports": [],
+                                "children": []
+                            }
+                        ]
+                    },
+                    {
+                        "id": "bc17c0c5-f9ac-ba36-482e-2eec15ab1c7d",
+                        "type": "String Format",
+                        "label": "String Format",
+                        "x": -255.99961952784184,
+                        "y": 256.8615635734283,
+                        "parameters": {
+                            "format": "{V} / {Max}"
+                        },
+                        "ports": [],
+                        "dynamicports": [
+                            {
+                                "name": "V",
+                                "type": "string",
+                                "plug": "input",
+                                "index": 2
+                            },
+                            {
+                                "name": "Max",
+                                "type": "string",
+                                "plug": "input",
+                                "index": 3
+                            }
+                        ],
+                        "children": []
+                    },
+                    {
+                        "id": "bfaf0e81-dbed-1771-901b-14b31359a39f",
+                        "type": "Component Inputs",
+                        "x": -575.4480225971492,
+                        "y": -22.277892736345493,
+                        "parameters": {},
+                        "ports": [
+                            {
+                                "name": "Value",
+                                "plug": "output",
+                                "type": "*",
+                                "index": 0
+                            },
+                            {
+                                "name": "Max",
+                                "plug": "output",
+                                "type": {
+                                    "name": "*"
+                                },
+                                "index": 1
+                            }
+                        ],
+                        "dynamicports": [],
+                        "children": []
+                    },
+                    {
+                        "id": "637a5b0f-168b-c195-29e0-eb39d203a491",
+                        "type": "Number",
+                        "x": -498.878094408867,
+                        "y": 158.98511370917225,
+                        "parameters": {
+                            "value": 100
+                        },
+                        "ports": [],
+                        "dynamicports": [],
+                        "children": []
+                    }
+                ]
+            },
+            "metadata": {
+                "canvasPos": {
+                    "x": -81.83397727881642,
+                    "y": 520.3525131987957
                 }
             }
         }
