@@ -43,16 +43,40 @@
                         "toProperty": "Enabled"
                     },
                     {
-                        "fromId": "e5e12210-09c2-f4fc-2abf-3505c29d1e3c",
-                        "fromProperty": "Value",
-                        "toId": "b4d194bc-1ec6-7aac-5470-d84770905409",
-                        "toProperty": "value"
-                    },
-                    {
                         "fromId": "6482840a-19b4-9a6f-7ba1-e9dce860889a",
                         "fromProperty": "savedValue",
                         "toId": "e5e12210-09c2-f4fc-2abf-3505c29d1e3c",
                         "toProperty": "Value"
+                    },
+                    {
+                        "fromId": "e5e12210-09c2-f4fc-2abf-3505c29d1e3c",
+                        "fromProperty": "Value",
+                        "toId": "6482840a-19b4-9a6f-7ba1-e9dce860889a",
+                        "toProperty": "value"
+                    },
+                    {
+                        "fromId": "a3366a37-8c7c-f07e-6a2b-978f7c1f9370",
+                        "fromProperty": "savedValue",
+                        "toId": "106381cc-604a-cda8-cb2f-619979f4692b",
+                        "toProperty": "Value"
+                    },
+                    {
+                        "fromId": "106381cc-604a-cda8-cb2f-619979f4692b",
+                        "fromProperty": "Value",
+                        "toId": "a3366a37-8c7c-f07e-6a2b-978f7c1f9370",
+                        "toProperty": "value"
+                    },
+                    {
+                        "fromId": "34039ffc-e188-c71a-2ae3-d05df5996cef",
+                        "fromProperty": "Submit",
+                        "toId": "30df8fe1-bd99-34a0-0033-92c7ce00b0fe",
+                        "toProperty": "value"
+                    },
+                    {
+                        "fromId": "e5e12210-09c2-f4fc-2abf-3505c29d1e3c",
+                        "fromProperty": "Value",
+                        "toId": "35a07866-90cb-aff7-985f-b70a96f6f8fa",
+                        "toProperty": "prop-Choice"
                     }
                 ],
                 "roots": [
@@ -170,11 +194,54 @@
                                         "dynamicports": [],
                                         "children": [
                                             {
-                                                "id": "e5e12210-09c2-f4fc-2abf-3505c29d1e3c",
+                                                "id": "106381cc-604a-cda8-cb2f-619979f4692b",
                                                 "type": "/#Form Kit/Radio Button Group",
                                                 "x": 20,
                                                 "y": 46,
-                                                "parameters": {},
+                                                "parameters": {
+                                                    "Label": "Choose"
+                                                },
+                                                "ports": [],
+                                                "dynamicports": [],
+                                                "children": [
+                                                    {
+                                                        "id": "963d34dc-3be1-137a-afbf-11daf959b2de",
+                                                        "type": "/#Form Kit/Radio Button",
+                                                        "x": 435,
+                                                        "y": 840,
+                                                        "parameters": {
+                                                            "Label": "Yes",
+                                                            "Name": "Test",
+                                                            "Value": "yes"
+                                                        },
+                                                        "ports": [],
+                                                        "dynamicports": [],
+                                                        "children": []
+                                                    },
+                                                    {
+                                                        "id": "a0b8cae7-e5fb-4aed-3a54-833b87409276",
+                                                        "type": "/#Form Kit/Radio Button",
+                                                        "x": 435,
+                                                        "y": 886,
+                                                        "parameters": {
+                                                            "Label": "No",
+                                                            "Name": "Test",
+                                                            "Value": "no"
+                                                        },
+                                                        "ports": [],
+                                                        "dynamicports": [],
+                                                        "children": []
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                "id": "e5e12210-09c2-f4fc-2abf-3505c29d1e3c",
+                                                "type": "/#Form Kit/Radio Button Group",
+                                                "x": 20,
+                                                "y": 220,
+                                                "parameters": {
+                                                    "Label": "Choose wisely"
+                                                },
                                                 "ports": [],
                                                 "dynamicports": [],
                                                 "children": [
@@ -184,9 +251,9 @@
                                                         "x": 20,
                                                         "y": 82,
                                                         "parameters": {
-                                                            "Label": "Yes",
+                                                            "Label": "Rock",
                                                             "Name": "Test",
-                                                            "Value": "yes"
+                                                            "Value": "1"
                                                         },
                                                         "ports": [],
                                                         "dynamicports": [],
@@ -198,9 +265,9 @@
                                                         "x": 20,
                                                         "y": 128,
                                                         "parameters": {
-                                                            "Label": "No",
+                                                            "Label": "Hard place",
                                                             "Name": "Test",
-                                                            "Value": "no"
+                                                            "Value": "2"
                                                         },
                                                         "ports": [],
                                                         "dynamicports": [],
@@ -241,10 +308,10 @@
                     {
                         "id": "35a07866-90cb-aff7-985f-b70a96f6f8fa",
                         "type": "noodl.net.formkit.validate",
-                        "x": 755.701952379286,
-                        "y": 446.4876549466633,
+                        "x": 894.159018081106,
+                        "y": 530.9857998466307,
                         "parameters": {
-                            "Schema": "schema({\n    Name:string().required('Must enter name'),\n    Character:string().required('Must select character')\n})",
+                            "Schema": "schema({\n    Name:string().required('Must enter name'),\n    Character:string().required('Must select character'),\n    Choice:string().required()\n})",
                             "Enabled": true
                         },
                         "ports": [],
@@ -300,28 +367,66 @@
                                 "type": "boolean",
                                 "plug": "output",
                                 "index": 8
+                            },
+                            {
+                                "name": "prop-Choice",
+                                "displayName": "Choice",
+                                "group": "Properties",
+                                "type": "*",
+                                "plug": "input/output",
+                                "index": 9
+                            },
+                            {
+                                "name": "err-Choice",
+                                "displayName": "Choice",
+                                "editorName": "Choice Error",
+                                "group": "Errors",
+                                "type": "string",
+                                "plug": "output",
+                                "index": 10
+                            },
+                            {
+                                "name": "valid-Choice",
+                                "editorName": "Choice Is Valid",
+                                "displayName": "Choice",
+                                "group": "Is Valid",
+                                "type": "boolean",
+                                "plug": "output",
+                                "index": 11
                             }
                         ],
                         "children": []
                     },
                     {
-                        "id": "b4d194bc-1ec6-7aac-5470-d84770905409",
+                        "id": "6482840a-19b4-9a6f-7ba1-e9dce860889a",
                         "type": "String",
-                        "x": 728.7119593557168,
-                        "y": 761.0157664167629,
-                        "parameters": {},
+                        "x": 120.01929076064337,
+                        "y": 935.3854552911093,
+                        "parameters": {
+                            "value": "2"
+                        },
                         "ports": [],
                         "dynamicports": [],
                         "children": []
                     },
                     {
-                        "id": "6482840a-19b4-9a6f-7ba1-e9dce860889a",
+                        "id": "a3366a37-8c7c-f07e-6a2b-978f7c1f9370",
                         "type": "String",
-                        "x": 124.44040591186157,
-                        "y": 786.5094332116554,
+                        "x": 120.45571104211433,
+                        "y": 712.3190324970496,
                         "parameters": {
-                            "value": "yes"
+                            "value": "no"
                         },
+                        "ports": [],
+                        "dynamicports": [],
+                        "children": []
+                    },
+                    {
+                        "id": "30df8fe1-bd99-34a0-0033-92c7ce00b0fe",
+                        "type": "Boolean",
+                        "x": 1092.2235783442486,
+                        "y": 312.79254886506095,
+                        "parameters": {},
                         "ports": [],
                         "dynamicports": [],
                         "children": []
@@ -391,6 +496,12 @@
                         "fromProperty": "Stroke Color",
                         "toId": "4b500d01-0791-d105-e7f1-435492bc05c2",
                         "toProperty": "borderColor"
+                    },
+                    {
+                        "fromId": "496a2d4b-14e9-6711-a3f3-6f2d9b206fd6",
+                        "fromProperty": "Type",
+                        "toId": "f50c4474-2374-9ad3-eb95-15a820ed350a",
+                        "toProperty": "type"
                     }
                 ],
                 "roots": [
@@ -514,6 +625,12 @@
                                 "type": {
                                     "name": "*"
                                 },
+                                "index": 3
+                            },
+                            {
+                                "name": "Type",
+                                "plug": "output",
+                                "type": "*",
                                 "index": 3
                             }
                         ],
@@ -818,7 +935,14 @@
             "name": "/#Form Kit/Form",
             "id": "78ee0144-a664-999b-9833-e5f63859fbe0",
             "graph": {
-                "connections": [],
+                "connections": [
+                    {
+                        "fromId": "4b70e9dd-7a25-c955-91db-d12d7ca11a83",
+                        "fromProperty": "onSubmit",
+                        "toId": "c2f676cd-c232-5431-ff63-029a20af3a15",
+                        "toProperty": "Submit"
+                    }
+                ],
                 "roots": [
                     {
                         "id": "4f000771-0532-4466-44f8-1e65dd439e90",
@@ -867,6 +991,23 @@
                                 ]
                             }
                         ]
+                    },
+                    {
+                        "id": "c2f676cd-c232-5431-ff63-029a20af3a15",
+                        "type": "Component Outputs",
+                        "x": 362.88703043268015,
+                        "y": 54.686337990198496,
+                        "parameters": {},
+                        "ports": [
+                            {
+                                "name": "Submit",
+                                "plug": "input",
+                                "type": "*",
+                                "index": 0
+                            }
+                        ],
+                        "dynamicports": [],
+                        "children": []
                     }
                 ]
             },
@@ -2542,12 +2683,6 @@
                         "toProperty": "for"
                     },
                     {
-                        "fromId": "d2550a49-d1c3-7bdc-aa47-51777cfb49e4",
-                        "fromProperty": "checkedChanged",
-                        "toId": "3988f8de-1ae8-2d0e-85b4-da5f7a129bbe",
-                        "toProperty": "Checked"
-                    },
-                    {
                         "fromId": "ba131b5a-ec62-834f-42b2-f4e363dad3b2",
                         "fromProperty": "Value",
                         "toId": "d2550a49-d1c3-7bdc-aa47-51777cfb49e4",
@@ -2718,25 +2853,6 @@
                                 "plug": "output",
                                 "type": "*",
                                 "index": 3
-                            }
-                        ],
-                        "dynamicports": [],
-                        "children": []
-                    },
-                    {
-                        "id": "3988f8de-1ae8-2d0e-85b4-da5f7a129bbe",
-                        "type": "Component Outputs",
-                        "x": 822.0446798422125,
-                        "y": 351.92225976236665,
-                        "parameters": {},
-                        "ports": [
-                            {
-                                "name": "Checked",
-                                "plug": "input",
-                                "type": {
-                                    "name": "*"
-                                },
-                                "index": 1
                             }
                         ],
                         "dynamicports": [],

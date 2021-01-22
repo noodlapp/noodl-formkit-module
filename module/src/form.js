@@ -4,7 +4,12 @@ import Noodl from '@noodl/noodl-sdk'
 // Form
 // --------------------------------------------------------------------------------------
 function Form(props) {
-	return <form className="ndl-formkit-form" {...props}>{props.children}</form>
+	return <form className="ndl-formkit-form" {...props}
+        onSubmit={(e) => {
+            e.preventDefault();
+            props.onSubmit&&props.onSubmit();
+        }}
+    >{props.children}</form>
 }
 
 var FormNode = {
@@ -17,9 +22,9 @@ var FormNode = {
 		return Form;
 	},
 	inputProps: {
-		action:{type:'string',displayName:'Action',group:'General'},
 	},
 	outputProps: {
+        onSubmit:{type:'signal',displayName:'Submit',group:'Events'}
 	}
 }
 FormNode = Noodl.defineReactNode(FormNode);
