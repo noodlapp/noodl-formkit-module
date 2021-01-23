@@ -3282,42 +3282,6 @@
             }
         },
         {
-            "name": "/#Form Kit/Date Input",
-            "id": "6374134d-92ac-50a6-3cb0-9a7aa87015af",
-            "graph": {
-                "connections": [],
-                "roots": [
-                    {
-                        "id": "3b9989b0-06f1-a7e3-ce5a-27651a163621",
-                        "type": "Group",
-                        "x": 0,
-                        "y": 0,
-                        "parameters": {},
-                        "ports": [],
-                        "dynamicports": [],
-                        "children": [
-                            {
-                                "id": "19a079f6-8bb8-34a2-9ef7-fa246d91bca1",
-                                "type": "net.noodl.formkit.dateinput",
-                                "x": 77.5,
-                                "y": 14.5,
-                                "parameters": {},
-                                "ports": [],
-                                "dynamicports": [],
-                                "children": []
-                            }
-                        ]
-                    }
-                ]
-            },
-            "metadata": {
-                "canvasPos": {
-                    "x": 952.5811075044962,
-                    "y": 416.95990949103697
-                }
-            }
-        },
-        {
             "name": "/#Form Kit/Slider",
             "id": "75618c4d-13af-bc18-8493-52f4b360dfe7",
             "graph": {
@@ -3363,6 +3327,24 @@
                         "fromProperty": "formatted",
                         "toId": "919d54cc-22ee-631b-e9bc-ea352176edd3",
                         "toProperty": "text"
+                    },
+                    {
+                        "fromId": "58bd57f8-14f5-92ed-ac5d-9286443ff6a4",
+                        "fromProperty": "currentValue",
+                        "toId": "ce0d01c7-3e7f-7ae2-7864-206541ecb6b1",
+                        "toProperty": "currentState"
+                    },
+                    {
+                        "fromId": "ce0d01c7-3e7f-7ae2-7864-206541ecb6b1",
+                        "fromProperty": "Stroke Color",
+                        "toId": "ae58622b-4550-dc75-c140-2e74ad9e4f35",
+                        "toProperty": "borderColor"
+                    },
+                    {
+                        "fromId": "9db34e58-07c5-5c78-48a0-32a75cb7f308",
+                        "fromProperty": "focusChanged",
+                        "toId": "58bd57f8-14f5-92ed-ac5d-9286443ff6a4",
+                        "toProperty": "input"
                     }
                 ],
                 "roots": [
@@ -3371,75 +3353,109 @@
                         "type": "Group",
                         "x": 0,
                         "y": 0,
-                        "parameters": {},
+                        "parameters": {
+                            "borderStyle": "solid",
+                            "borderWidth": {
+                                "value": 1,
+                                "unit": "px"
+                            },
+                            "paddingLeft": {
+                                "value": 15,
+                                "unit": "px"
+                            },
+                            "paddingRight": {
+                                "value": 15,
+                                "unit": "px"
+                            },
+                            "height": {
+                                "value": 50,
+                                "unit": "px"
+                            }
+                        },
                         "ports": [],
                         "dynamicports": [],
                         "children": [
                             {
-                                "id": "0c737406-6067-3e67-d36d-8cf6fcd87222",
+                                "id": "88f3a3f7-1d3b-c36b-eb2d-df3d65411118",
                                 "type": "Group",
                                 "x": 20,
-                                "y": 46,
-                                "parameters": {
-                                    "position": "absolute",
-                                    "backgroundColor": "#424242",
-                                    "height": {
-                                        "value": 20,
-                                        "unit": "px"
-                                    },
-                                    "alignY": "center"
-                                },
+                                "y": 82,
+                                "parameters": {},
                                 "ports": [],
                                 "dynamicports": [],
                                 "children": [
                                     {
-                                        "id": "40dac51a-1f69-2058-0a25-3c2d5f8c6b03",
-                                        "type": "Circle",
-                                        "x": 20,
-                                        "y": 82,
+                                        "id": "0c737406-6067-3e67-d36d-8cf6fcd87222",
+                                        "type": "Group",
+                                        "x": 37.93589373269526,
+                                        "y": 99.81502413433597,
                                         "parameters": {
-                                            "size": 30,
                                             "position": "absolute",
-                                            "fillColor": "#6A55A6",
-                                            "alignX": "right",
-                                            "transformX": {
-                                                "value": 15,
+                                            "backgroundColor": "#424242",
+                                            "height": {
+                                                "value": 20,
                                                 "unit": "px"
                                             },
                                             "alignY": "center"
                                         },
                                         "ports": [],
                                         "dynamicports": [],
+                                        "children": [
+                                            {
+                                                "id": "40dac51a-1f69-2058-0a25-3c2d5f8c6b03",
+                                                "type": "Circle",
+                                                "x": 20,
+                                                "y": 82,
+                                                "parameters": {
+                                                    "size": 30,
+                                                    "position": "absolute",
+                                                    "fillColor": "#6A55A6",
+                                                    "alignX": "right",
+                                                    "transformX": {
+                                                        "value": 15,
+                                                        "unit": "px"
+                                                    },
+                                                    "alignY": "center"
+                                                },
+                                                "ports": [],
+                                                "dynamicports": [],
+                                                "children": []
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "id": "9db34e58-07c5-5c78-48a0-32a75cb7f308",
+                                        "type": "net.noodl.formkit.range",
+                                        "label": "Hidden native",
+                                        "x": 20,
+                                        "y": 174,
+                                        "parameters": {
+                                            "height": {
+                                                "value": 50,
+                                                "unit": "px"
+                                            },
+                                            "opacity": 0
+                                        },
+                                        "ports": [],
+                                        "dynamicports": [],
+                                        "children": []
+                                    },
+                                    {
+                                        "id": "919d54cc-22ee-631b-e9bc-ea352176edd3",
+                                        "type": "Text",
+                                        "x": 20,
+                                        "y": 329,
+                                        "parameters": {
+                                            "position": "absolute",
+                                            "alignX": "right",
+                                            "alignY": "top",
+                                            "sizeMode": "contentSize"
+                                        },
+                                        "ports": [],
+                                        "dynamicports": [],
                                         "children": []
                                     }
                                 ]
-                            },
-                            {
-                                "id": "9db34e58-07c5-5c78-48a0-32a75cb7f308",
-                                "type": "net.noodl.formkit.range",
-                                "label": "Hidden native",
-                                "x": 20,
-                                "y": 174,
-                                "parameters": {
-                                    "height": {
-                                        "value": 50,
-                                        "unit": "px"
-                                    },
-                                    "opacity": 0
-                                },
-                                "ports": [],
-                                "dynamicports": [],
-                                "children": []
-                            },
-                            {
-                                "id": "919d54cc-22ee-631b-e9bc-ea352176edd3",
-                                "type": "Text",
-                                "x": 85.5,
-                                "y": 26,
-                                "parameters": {},
-                                "ports": [],
-                                "dynamicports": [],
-                                "children": []
                             }
                         ]
                     },
@@ -3505,13 +3521,279 @@
                         "ports": [],
                         "dynamicports": [],
                         "children": []
+                    },
+                    {
+                        "id": "ce0d01c7-3e7f-7ae2-7864-206541ecb6b1",
+                        "type": "States",
+                        "label": "Focused",
+                        "x": 452.9416750780267,
+                        "y": -2.7845947483906457,
+                        "parameters": {
+                            "states": "Yes,No",
+                            "currentState": "No",
+                            "values": "Stroke Color",
+                            "type-Stroke Color": "color",
+                            "value-Yes-Stroke Color": "#7C91E6",
+                            "value-No-Stroke Color": "#0D0D0D",
+                            "transitiondef-Yes": {
+                                "curve": [
+                                    0,
+                                    0,
+                                    0.58,
+                                    1
+                                ],
+                                "dur": 0,
+                                "delay": 0
+                            },
+                            "transitiondef-No": {
+                                "curve": [
+                                    0,
+                                    0,
+                                    0.58,
+                                    1
+                                ],
+                                "dur": 0,
+                                "delay": 0
+                            }
+                        },
+                        "ports": [],
+                        "dynamicports": [
+                            {
+                                "type": {
+                                    "name": "color",
+                                    "allowConnectionsOnly": true
+                                },
+                                "plug": "output",
+                                "group": "Values",
+                                "name": "Stroke Color",
+                                "index": 5
+                            },
+                            {
+                                "type": {
+                                    "name": "enum",
+                                    "enums": [
+                                        {
+                                            "label": "Number",
+                                            "value": "number"
+                                        },
+                                        {
+                                            "label": "String",
+                                            "value": "string"
+                                        },
+                                        {
+                                            "label": "Boolean",
+                                            "value": "boolean"
+                                        },
+                                        {
+                                            "label": "Color",
+                                            "value": "color"
+                                        },
+                                        {
+                                            "label": "Text Style",
+                                            "value": "textStyle"
+                                        }
+                                    ],
+                                    "allowEditOnly": true
+                                },
+                                "default": "number",
+                                "plug": "input",
+                                "group": "Types",
+                                "displayName": "Stroke Color",
+                                "name": "type-Stroke Color",
+                                "index": 6
+                            },
+                            {
+                                "plug": "input",
+                                "type": "color",
+                                "group": "Yes Values",
+                                "name": "value-Yes-Stroke Color",
+                                "displayName": "Stroke Color",
+                                "editorName": "Yes|Stroke Color",
+                                "index": 7
+                            },
+                            {
+                                "plug": "input",
+                                "type": "curve",
+                                "displayName": "Default",
+                                "default": {
+                                    "curve": [
+                                        0,
+                                        0,
+                                        0.58,
+                                        1
+                                    ],
+                                    "dur": 300,
+                                    "delay": 0
+                                },
+                                "group": "Yes Transitions",
+                                "name": "transitiondef-Yes",
+                                "index": 8
+                            },
+                            {
+                                "plug": "input",
+                                "type": {
+                                    "name": "curve"
+                                },
+                                "default": {
+                                    "curve": [
+                                        0,
+                                        0,
+                                        0.58,
+                                        1
+                                    ],
+                                    "dur": 0,
+                                    "delay": 0
+                                },
+                                "group": "Yes Transitions",
+                                "name": "transition-Yes-Stroke Color",
+                                "displayName": "Stroke Color",
+                                "editorName": "Transition Yes|Stroke Color",
+                                "index": 9
+                            },
+                            {
+                                "plug": "input",
+                                "type": {
+                                    "name": "boolean",
+                                    "allowConnectionsOnly": true
+                                },
+                                "displayName": "To Yes",
+                                "name": "to-Yes",
+                                "group": "Go to state",
+                                "index": 10
+                            },
+                            {
+                                "plug": "output",
+                                "type": "boolean",
+                                "displayName": "At Yes",
+                                "name": "at-Yes",
+                                "group": "Current state",
+                                "index": 11
+                            },
+                            {
+                                "plug": "output",
+                                "type": "signal",
+                                "displayName": "Has Reached Yes",
+                                "name": "reached-Yes",
+                                "group": "Current state",
+                                "index": 12
+                            },
+                            {
+                                "plug": "input",
+                                "type": "color",
+                                "group": "No Values",
+                                "name": "value-No-Stroke Color",
+                                "displayName": "Stroke Color",
+                                "editorName": "No|Stroke Color",
+                                "index": 13
+                            },
+                            {
+                                "plug": "input",
+                                "type": "curve",
+                                "displayName": "Default",
+                                "default": {
+                                    "curve": [
+                                        0,
+                                        0,
+                                        0.58,
+                                        1
+                                    ],
+                                    "dur": 300,
+                                    "delay": 0
+                                },
+                                "group": "No Transitions",
+                                "name": "transitiondef-No",
+                                "index": 14
+                            },
+                            {
+                                "plug": "input",
+                                "type": {
+                                    "name": "curve"
+                                },
+                                "default": {
+                                    "curve": [
+                                        0,
+                                        0,
+                                        0.58,
+                                        1
+                                    ],
+                                    "dur": 0,
+                                    "delay": 0
+                                },
+                                "group": "No Transitions",
+                                "name": "transition-No-Stroke Color",
+                                "displayName": "Stroke Color",
+                                "editorName": "Transition No|Stroke Color",
+                                "index": 15
+                            },
+                            {
+                                "plug": "input",
+                                "type": {
+                                    "name": "boolean",
+                                    "allowConnectionsOnly": true
+                                },
+                                "displayName": "To No",
+                                "name": "to-No",
+                                "group": "Go to state",
+                                "index": 16
+                            },
+                            {
+                                "plug": "output",
+                                "type": "boolean",
+                                "displayName": "At No",
+                                "name": "at-No",
+                                "group": "Current state",
+                                "index": 17
+                            },
+                            {
+                                "plug": "output",
+                                "type": "signal",
+                                "displayName": "Has Reached No",
+                                "name": "reached-No",
+                                "group": "Current state",
+                                "index": 18
+                            },
+                            {
+                                "plug": "input",
+                                "type": {
+                                    "name": "enum",
+                                    "enums": [
+                                        "Yes",
+                                        "No"
+                                    ]
+                                },
+                                "group": "States",
+                                "displayName": "State",
+                                "name": "currentState",
+                                "default": "Yes",
+                                "index": 19
+                            }
+                        ],
+                        "children": []
+                    },
+                    {
+                        "id": "58bd57f8-14f5-92ed-ac5d-9286443ff6a4",
+                        "type": "Boolean To String",
+                        "label": "Boolean To String",
+                        "x": 477.0057953455232,
+                        "y": 222.40099127805559,
+                        "parameters": {
+                            "trueString": "Yes",
+                            "falseString": "No"
+                        },
+                        "ports": [],
+                        "dynamicports": [],
+                        "children": []
                     }
                 ]
             },
             "metadata": {
                 "canvasPos": {
-                    "x": -81.83397727881642,
-                    "y": 520.3525131987957
+                    "x": -82.04940994897427,
+                    "y": 504.78416143046576
+                },
+                "canvasSize": {
+                    "width": "459px",
+                    "height": "75px"
                 }
             }
         }
