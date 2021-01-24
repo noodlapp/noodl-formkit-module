@@ -14,8 +14,8 @@ function Range(props) {
 
     // Report initial values when mounted
 	useEffect(() => {
-		setValue(!!props.value);
-        props.valueChanged && props.valueChanged(!!props.value);
+		setValue(props.value);
+        props.valueChanged && props.valueChanged(props.value);
 
         props.focusChanged && props.focusChanged(false);
         props.hoverChanged && props.hoverChanged(false);
@@ -46,16 +46,17 @@ var RangeNode = {
         this.props.sizeMode = 'explicit';
         this.props.id = this.outputs.controlId = 'input-' + Utils.guid();
         this.props.enabled = this.outputs.enabled = (this.inputs.enabled===undefined)?true:this.inputs.enabled;
-        this.outputs.value = this.props.value;
+        this.outputs.value = this.props.value = this.props.min;
         this.props.valueChanged = (value) => {
-            const min = (this.props.min || 0)
-            const max = (this.props.max || 100)
+            const min = this.props.min
+            const max = this.props.max
             const valuePercent = Math.floor( (value - min) / (max - min) * 100 )
             this.setOutputs({
                 value:value,
                 valuePercent:valuePercent
             })
         }
+        this.props.valueChanged(this.props.value); // Update initial values
 	},
 	getReactComponent() {
 		return Range

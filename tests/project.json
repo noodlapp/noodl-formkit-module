@@ -102,7 +102,8 @@
                                 "value": 10,
                                 "unit": "px"
                             },
-                            "backgroundColor": "#FFFFFF"
+                            "backgroundColor": "#FFFFFF",
+                            "scrollEnabled": true
                         },
                         "ports": [],
                         "dynamicports": [],
@@ -3796,12 +3797,628 @@
                     "height": "75px"
                 }
             }
+        },
+        {
+            "name": "/#Simple Design System/Slider",
+            "id": "a36e9e1f-0805-145c-a385-95d2e0cda785",
+            "graph": {
+                "connections": [
+                    {
+                        "fromId": "0a6c62c0-c6b7-ebfa-142d-636e45a942f8",
+                        "fromProperty": "Margin Left",
+                        "toId": "7f11efa2-480b-35e3-a623-7d3915c7729c",
+                        "toProperty": "marginLeft"
+                    },
+                    {
+                        "fromId": "0a6c62c0-c6b7-ebfa-142d-636e45a942f8",
+                        "fromProperty": "Margin Right",
+                        "toId": "7f11efa2-480b-35e3-a623-7d3915c7729c",
+                        "toProperty": "marginRight"
+                    },
+                    {
+                        "fromId": "0a6c62c0-c6b7-ebfa-142d-636e45a942f8",
+                        "fromProperty": "Margin Top",
+                        "toId": "7f11efa2-480b-35e3-a623-7d3915c7729c",
+                        "toProperty": "marginTop"
+                    },
+                    {
+                        "fromId": "0a6c62c0-c6b7-ebfa-142d-636e45a942f8",
+                        "fromProperty": "Margin Bottom",
+                        "toId": "7f11efa2-480b-35e3-a623-7d3915c7729c",
+                        "toProperty": "marginBottom"
+                    },
+                    {
+                        "fromId": "0a6c62c0-c6b7-ebfa-142d-636e45a942f8",
+                        "fromProperty": "Align X",
+                        "toId": "7f11efa2-480b-35e3-a623-7d3915c7729c",
+                        "toProperty": "alignX"
+                    },
+                    {
+                        "fromId": "0a6c62c0-c6b7-ebfa-142d-636e45a942f8",
+                        "fromProperty": "Align Y",
+                        "toId": "7f11efa2-480b-35e3-a623-7d3915c7729c",
+                        "toProperty": "alignY"
+                    },
+                    {
+                        "fromId": "0a6c62c0-c6b7-ebfa-142d-636e45a942f8",
+                        "fromProperty": "Width",
+                        "toId": "7f11efa2-480b-35e3-a623-7d3915c7729c",
+                        "toProperty": "width"
+                    },
+                    {
+                        "fromId": "0a6c62c0-c6b7-ebfa-142d-636e45a942f8",
+                        "fromProperty": "Position",
+                        "toId": "7f11efa2-480b-35e3-a623-7d3915c7729c",
+                        "toProperty": "position"
+                    },
+                    {
+                        "fromId": "a36b9245-f6c2-f720-74f6-6d4601a63f71",
+                        "fromProperty": "formatted",
+                        "toId": "5e2dd4ef-8add-47f3-ba57-30aec05cc4b3",
+                        "toProperty": "text"
+                    },
+                    {
+                        "fromId": "0a6c62c0-c6b7-ebfa-142d-636e45a942f8",
+                        "fromProperty": "Show Current Value",
+                        "toId": "5e2dd4ef-8add-47f3-ba57-30aec05cc4b3",
+                        "toProperty": "mounted"
+                    },
+                    {
+                        "fromId": "0a6c62c0-c6b7-ebfa-142d-636e45a942f8",
+                        "fromProperty": "Label",
+                        "toId": "8984450e-7501-238b-a000-960409aef039",
+                        "toProperty": "text"
+                    },
+                    {
+                        "fromId": "22c4ca1a-1eb5-4690-7cdc-5d156dd03f85",
+                        "fromProperty": "valuePercent",
+                        "toId": "0a1cc8b6-9851-4140-c89c-02c4bab1ea68",
+                        "toProperty": "width"
+                    },
+                    {
+                        "fromId": "0a6c62c0-c6b7-ebfa-142d-636e45a942f8",
+                        "fromProperty": "Min Value",
+                        "toId": "22c4ca1a-1eb5-4690-7cdc-5d156dd03f85",
+                        "toProperty": "min"
+                    },
+                    {
+                        "fromId": "0a6c62c0-c6b7-ebfa-142d-636e45a942f8",
+                        "fromProperty": "Step",
+                        "toId": "22c4ca1a-1eb5-4690-7cdc-5d156dd03f85",
+                        "toProperty": "step"
+                    },
+                    {
+                        "fromId": "0a6c62c0-c6b7-ebfa-142d-636e45a942f8",
+                        "fromProperty": "Max Value",
+                        "toId": "1c2fee82-e8a9-fed5-3e34-30023ca338fe",
+                        "toProperty": "value"
+                    },
+                    {
+                        "fromId": "1c2fee82-e8a9-fed5-3e34-30023ca338fe",
+                        "fromProperty": "savedValue",
+                        "toId": "22c4ca1a-1eb5-4690-7cdc-5d156dd03f85",
+                        "toProperty": "max"
+                    },
+                    {
+                        "fromId": "1c2fee82-e8a9-fed5-3e34-30023ca338fe",
+                        "fromProperty": "savedValue",
+                        "toId": "a36b9245-f6c2-f720-74f6-6d4601a63f71",
+                        "toProperty": "maxOutput"
+                    },
+                    {
+                        "fromId": "22c4ca1a-1eb5-4690-7cdc-5d156dd03f85",
+                        "fromProperty": "value",
+                        "toId": "a36b9245-f6c2-f720-74f6-6d4601a63f71",
+                        "toProperty": "output"
+                    },
+                    {
+                        "fromId": "22c4ca1a-1eb5-4690-7cdc-5d156dd03f85",
+                        "fromProperty": "value",
+                        "toId": "ca52a646-6b47-1730-6685-9cb55e00b92c",
+                        "toProperty": "Value"
+                    },
+                    {
+                        "fromId": "22c4ca1a-1eb5-4690-7cdc-5d156dd03f85",
+                        "fromProperty": "controlId",
+                        "toId": "8984450e-7501-238b-a000-960409aef039",
+                        "toProperty": "for"
+                    }
+                ],
+                "roots": [
+                    {
+                        "id": "7f11efa2-480b-35e3-a623-7d3915c7729c",
+                        "type": "Group",
+                        "label": "SDS Slider",
+                        "x": 2287.752356229144,
+                        "y": 2099.2770604872667,
+                        "parameters": {
+                            "sizeMode": "contentHeight",
+                            "paddingTop": {
+                                "value": 0,
+                                "unit": "px"
+                            },
+                            "marginBottom": {
+                                "value": 8,
+                                "unit": "px"
+                            },
+                            "marginTop": {
+                                "value": 8,
+                                "unit": "px"
+                            }
+                        },
+                        "ports": [],
+                        "dynamicports": [],
+                        "children": [
+                            {
+                                "id": "9165aa33-5220-e2e3-45a8-c8e74245c863",
+                                "type": "Group",
+                                "label": "Label",
+                                "x": 20,
+                                "y": 235,
+                                "parameters": {
+                                    "marginBottom": {
+                                        "value": 0,
+                                        "unit": "px"
+                                    },
+                                    "flexDirection": "row",
+                                    "sizeMode": "contentHeight"
+                                },
+                                "ports": [],
+                                "dynamicports": [],
+                                "children": [
+                                    {
+                                        "id": "8984450e-7501-238b-a000-960409aef039",
+                                        "type": "net.noodl.formkit.label",
+                                        "x": 20,
+                                        "y": 59,
+                                        "parameters": {
+                                            "textStyle": "SDS - Label Text",
+                                            "text": "Label",
+                                            "marginBottom": {
+                                                "value": 4,
+                                                "unit": "px"
+                                            }
+                                        },
+                                        "ports": [],
+                                        "dynamicports": [],
+                                        "children": []
+                                    },
+                                    {
+                                        "id": "5e2dd4ef-8add-47f3-ba57-30aec05cc4b3",
+                                        "type": "Text",
+                                        "x": 20,
+                                        "y": 141,
+                                        "parameters": {
+                                            "text": "Volume",
+                                            "textAlignX": "right",
+                                            "textStyle": "SDS - Label Text"
+                                        },
+                                        "ports": [],
+                                        "dynamicports": [],
+                                        "children": []
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "7829a1af-5953-f190-d52e-e089fa4fabb2",
+                                "type": "Group",
+                                "x": 20,
+                                "y": 478,
+                                "parameters": {
+                                    "height": {
+                                        "value": 30,
+                                        "unit": "px"
+                                    }
+                                },
+                                "ports": [],
+                                "dynamicports": [],
+                                "children": [
+                                    {
+                                        "id": "d0fb28a6-d4eb-ff5e-e9cd-ea87d40657a4",
+                                        "type": "Group",
+                                        "x": 20,
+                                        "y": 46,
+                                        "parameters": {
+                                            "marginLeft": {
+                                                "value": 8,
+                                                "unit": "px"
+                                            },
+                                            "marginRight": {
+                                                "value": 8,
+                                                "unit": "px"
+                                            },
+                                            "position": "absolute"
+                                        },
+                                        "ports": [],
+                                        "dynamicports": [],
+                                        "children": [
+                                            {
+                                                "id": "1fd1a34b-9885-44d5-a947-fc2e971c1d5b",
+                                                "type": "Group",
+                                                "label": "Bgbar",
+                                                "x": 20,
+                                                "y": 46,
+                                                "parameters": {
+                                                    "height": {
+                                                        "value": 4,
+                                                        "unit": "px"
+                                                    },
+                                                    "backgroundColor": "Grey - Base",
+                                                    "position": "absolute",
+                                                    "alignY": "center"
+                                                },
+                                                "ports": [],
+                                                "dynamicports": [],
+                                                "children": []
+                                            },
+                                            {
+                                                "id": "0a1cc8b6-9851-4140-c89c-02c4bab1ea68",
+                                                "type": "Group",
+                                                "label": "Progressbar",
+                                                "x": 2347.752356229144,
+                                                "y": 2669.2770604872667,
+                                                "parameters": {
+                                                    "height": {
+                                                        "value": 4,
+                                                        "unit": "px"
+                                                    },
+                                                    "backgroundColor": "Primary - Light",
+                                                    "position": "absolute",
+                                                    "alignY": "center"
+                                                },
+                                                "ports": [],
+                                                "dynamicports": [],
+                                                "children": [
+                                                    {
+                                                        "id": "4a546899-bab6-5b3f-4fe6-9dcf33aea159",
+                                                        "type": "Group",
+                                                        "label": "Progressbar Handle",
+                                                        "x": 20,
+                                                        "y": 95,
+                                                        "parameters": {
+                                                            "width": {
+                                                                "value": 16,
+                                                                "unit": "px"
+                                                            },
+                                                            "height": {
+                                                                "value": 16,
+                                                                "unit": "px"
+                                                            },
+                                                            "backgroundColor": "Primary - Base",
+                                                            "borderRadius": {
+                                                                "value": 50,
+                                                                "unit": "px"
+                                                            },
+                                                            "alignY": "center",
+                                                            "position": "absolute",
+                                                            "alignX": "right",
+                                                            "transformX": {
+                                                                "value": 8,
+                                                                "unit": "px"
+                                                            }
+                                                        },
+                                                        "ports": [],
+                                                        "dynamicports": [],
+                                                        "children": []
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "id": "22c4ca1a-1eb5-4690-7cdc-5d156dd03f85",
+                                        "type": "net.noodl.formkit.range",
+                                        "label": "Hidden native range input",
+                                        "x": 20,
+                                        "y": 305,
+                                        "parameters": {
+                                            "opacity": 0,
+                                            "styleType": "css",
+                                            "position": "absolute",
+                                            "alignY": "center"
+                                        },
+                                        "ports": [],
+                                        "dynamicports": [],
+                                        "children": []
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "0a6c62c0-c6b7-ebfa-142d-636e45a942f8",
+                        "type": "Component Inputs",
+                        "x": 1779.7055371426884,
+                        "y": 2211.477741532506,
+                        "parameters": {},
+                        "ports": [
+                            {
+                                "name": "Label",
+                                "plug": "output",
+                                "type": "*",
+                                "index": 0,
+                                "group": "Styling"
+                            },
+                            {
+                                "name": "Margin Left",
+                                "plug": "output",
+                                "type": "*",
+                                "index": 6,
+                                "group": "Margins"
+                            },
+                            {
+                                "name": "Margin Right",
+                                "plug": "output",
+                                "type": "*",
+                                "index": 4,
+                                "group": "Margins"
+                            },
+                            {
+                                "name": "Margin Top",
+                                "plug": "output",
+                                "type": "*",
+                                "index": 3,
+                                "group": "Margins"
+                            },
+                            {
+                                "name": "Margin Bottom",
+                                "plug": "output",
+                                "type": "*",
+                                "index": 5,
+                                "group": "Margins"
+                            },
+                            {
+                                "name": "Align X",
+                                "plug": "output",
+                                "type": "*",
+                                "index": 8,
+                                "group": "Alignment"
+                            },
+                            {
+                                "name": "Align Y",
+                                "plug": "output",
+                                "type": "*",
+                                "index": 7,
+                                "group": "Alignment"
+                            },
+                            {
+                                "name": "Width",
+                                "plug": "output",
+                                "type": "*",
+                                "index": 2,
+                                "group": "Dimensions"
+                            },
+                            {
+                                "name": "Position",
+                                "plug": "output",
+                                "type": "*",
+                                "index": 9,
+                                "group": "Position"
+                            },
+                            {
+                                "name": "Show Current Value",
+                                "plug": "output",
+                                "type": {
+                                    "name": "*"
+                                },
+                                "index": 1,
+                                "group": "Styling"
+                            },
+                            {
+                                "name": "Value",
+                                "plug": "output",
+                                "type": {
+                                    "name": "*"
+                                },
+                                "group": "Slider Values",
+                                "index": 10
+                            },
+                            {
+                                "name": "Min Value",
+                                "plug": "output",
+                                "type": {
+                                    "name": "*"
+                                },
+                                "group": "Slider Values",
+                                "index": 11
+                            },
+                            {
+                                "name": "Max Value",
+                                "plug": "output",
+                                "type": {
+                                    "name": "*"
+                                },
+                                "group": "Slider Values",
+                                "index": 12
+                            },
+                            {
+                                "name": "Step",
+                                "plug": "output",
+                                "type": {
+                                    "name": "*"
+                                },
+                                "group": "Slider Values",
+                                "index": 13
+                            }
+                        ],
+                        "dynamicports": [],
+                        "children": []
+                    },
+                    {
+                        "id": "a36b9245-f6c2-f720-74f6-6d4601a63f71",
+                        "type": "String Format",
+                        "x": 2850.1085004558904,
+                        "y": 2739.506206865469,
+                        "parameters": {
+                            "format": "{output} / {maxOutput}"
+                        },
+                        "ports": [],
+                        "dynamicports": [
+                            {
+                                "name": "output",
+                                "type": "string",
+                                "plug": "input",
+                                "index": 2
+                            },
+                            {
+                                "name": "maxOutput",
+                                "type": "string",
+                                "plug": "input",
+                                "index": 3
+                            }
+                        ],
+                        "children": []
+                    },
+                    {
+                        "id": "ba187b84-a6d1-2b9c-f6f7-d9897577f290",
+                        "type": "Component Outputs",
+                        "x": 3318.773466757696,
+                        "y": 2755.2745851202326,
+                        "parameters": {},
+                        "ports": [
+                            {
+                                "name": "Value",
+                                "plug": "input",
+                                "type": {
+                                    "name": "*"
+                                },
+                                "index": 0
+                            },
+                            {
+                                "name": "Drag Ended",
+                                "plug": "input",
+                                "type": {
+                                    "name": "*"
+                                },
+                                "index": 1,
+                                "group": "Signals"
+                            }
+                        ],
+                        "dynamicports": [],
+                        "children": []
+                    },
+                    {
+                        "id": "1c2fee82-e8a9-fed5-3e34-30023ca338fe",
+                        "type": "Number",
+                        "x": 2016.9455703512817,
+                        "y": 3017.274838604118,
+                        "parameters": {
+                            "value": 100
+                        },
+                        "ports": [],
+                        "dynamicports": [],
+                        "children": []
+                    },
+                    {
+                        "id": "ca52a646-6b47-1730-6685-9cb55e00b92c",
+                        "type": "Component Outputs",
+                        "x": 2891.5067704886524,
+                        "y": 2489.400060569467,
+                        "parameters": {},
+                        "ports": [
+                            {
+                                "name": "Value",
+                                "plug": "input",
+                                "type": "*",
+                                "index": 0
+                            }
+                        ],
+                        "dynamicports": [],
+                        "children": []
+                    }
+                ]
+            },
+            "metadata": {
+                "canvasPos": {
+                    "x": 6.892711989776888,
+                    "y": -23.346982902769184
+                },
+                "canvasSize": {
+                    "width": "296px",
+                    "height": "auto"
+                }
+            }
         }
     ],
     "settings": {},
-    "rootNodeId": "e8570140-710c-df7f-2314-faa1656a4f9c",
+    "rootNodeId": "7f11efa2-480b-35e3-a623-7d3915c7729c",
     "version": "1",
     "metadata": {
-        "dbCollections": []
+        "dbCollections": [],
+        "styles": {
+            "colors": {
+                "Grey - Base": "#E7E9ED",
+                "Grey - Light 1": "#C6C6C6",
+                "Grey - Light 2": "#E7E9ED",
+                "Grey - Dark 2": "#434B53",
+                "Grey - Dark 1": "#808080",
+                "Primary - Base": "#1776D2",
+                "Primary - Dark 2": "#07285E",
+                "Primary - Dark 1": "#0c45a1",
+                "Primary - Light": "#9ACDFF",
+                "Error - Base": "#E8423A",
+                "Warning - Base": "#FF9800",
+                "Success - Base": "#4CAF50",
+                "White": "#FFFFFF",
+                "Black": "#000000"
+            },
+            "text": {
+                "SDS - Button Label": {
+                    "fontFamily": "Roboto/Roboto-Medium.ttf",
+                    "fontSize": {
+                        "value": "16",
+                        "unit": "px"
+                    },
+                    "lineHeight": {
+                        "value": "16",
+                        "unit": "px"
+                    }
+                },
+                "SDS - Label Text": {
+                    "fontFamily": "Roboto/Roboto-Medium.ttf",
+                    "fontSize": {
+                        "value": "14",
+                        "unit": "px"
+                    },
+                    "lineHeight": {
+                        "value": "14",
+                        "unit": "px"
+                    }
+                },
+                "SDS - body text": {
+                    "fontFamily": "Roboto/Roboto-Regular.ttf",
+                    "fontSize": {
+                        "value": "18",
+                        "unit": "px"
+                    },
+                    "lineHeight": {
+                        "value": "24",
+                        "unit": "px"
+                    }
+                },
+                "SDS - H2 Text": {
+                    "fontFamily": "Roboto/Roboto-Medium.ttf",
+                    "fontSize": {
+                        "value": "36",
+                        "unit": "px"
+                    },
+                    "lineHeight": {
+                        "value": "36",
+                        "unit": "px"
+                    }
+                },
+                "SDS - H3 Text": {
+                    "fontFamily": "Roboto/Roboto-Regular.ttf",
+                    "fontSize": {
+                        "value": "20",
+                        "unit": "px"
+                    },
+                    "lineHeight": {
+                        "value": "24",
+                        "unit": "px"
+                    }
+                }
+            }
+        }
     }
 }
