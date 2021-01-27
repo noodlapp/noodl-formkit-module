@@ -330,8 +330,8 @@
                     {
                         "id": "35a07866-90cb-aff7-985f-b70a96f6f8fa",
                         "type": "noodl.net.formkit.validate",
-                        "x": 894.159018081106,
-                        "y": 530.9857998466307,
+                        "x": 1033.240418738188,
+                        "y": 534.6946371974863,
                         "parameters": {
                             "Schema": "schema({\n    Name:string().required('Must enter name'),\n    Character:string().required('Must select character'),\n    Choice:string().required()\n})",
                             "Enabled": true
@@ -1626,11 +1626,11 @@
                                 "y": 46,
                                 "parameters": {
                                     "text": "Label",
-                                    "fontFamily": "OpenSans-Regular.ttf",
                                     "marginBottom": {
                                         "value": 10,
                                         "unit": "px"
-                                    }
+                                    },
+                                    "textStyle": "SDS - H2 Text"
                                 },
                                 "ports": [],
                                 "dynamicports": [],
@@ -3386,56 +3386,69 @@
                                 "dynamicports": [],
                                 "children": [
                                     {
-                                        "id": "0c737406-6067-3e67-d36d-8cf6fcd87222",
+                                        "id": "a60ddbd3-2b9c-153c-31cc-da331114e836",
                                         "type": "Group",
-                                        "x": 37.93589373269526,
-                                        "y": 99.81502413433597,
+                                        "label": "Background bar",
+                                        "x": 20,
+                                        "y": 46,
                                         "parameters": {
                                             "position": "absolute",
-                                            "backgroundColor": "#424242",
+                                            "backgroundColor": "#E6E6E6",
                                             "height": {
-                                                "value": 20,
+                                                "value": 8,
                                                 "unit": "px"
                                             },
                                             "alignY": "center"
                                         },
                                         "ports": [],
                                         "dynamicports": [],
-                                        "children": [
-                                            {
-                                                "id": "40dac51a-1f69-2058-0a25-3c2d5f8c6b03",
-                                                "type": "Circle",
-                                                "x": 20,
-                                                "y": 82,
-                                                "parameters": {
-                                                    "size": 30,
-                                                    "position": "absolute",
-                                                    "fillColor": "#6A55A6",
-                                                    "alignX": "right",
-                                                    "transformX": {
-                                                        "value": 15,
-                                                        "unit": "px"
-                                                    },
-                                                    "alignY": "center"
-                                                },
-                                                "ports": [],
-                                                "dynamicports": [],
-                                                "children": []
-                                            }
-                                        ]
+                                        "children": []
+                                    },
+                                    {
+                                        "id": "0c737406-6067-3e67-d36d-8cf6fcd87222",
+                                        "type": "Group",
+                                        "label": "Progess",
+                                        "x": 20,
+                                        "y": 105,
+                                        "parameters": {
+                                            "position": "absolute",
+                                            "backgroundColor": "#424242",
+                                            "height": {
+                                                "value": 8,
+                                                "unit": "px"
+                                            },
+                                            "alignY": "center"
+                                        },
+                                        "ports": [],
+                                        "dynamicports": [],
+                                        "children": []
                                     },
                                     {
                                         "id": "9db34e58-07c5-5c78-48a0-32a75cb7f308",
                                         "type": "net.noodl.formkit.range",
-                                        "label": "Hidden native",
                                         "x": 20,
-                                        "y": 174,
+                                        "y": 200,
                                         "parameters": {
                                             "height": {
-                                                "value": 50,
+                                                "value": 32,
                                                 "unit": "px"
                                             },
-                                            "opacity": 0
+                                            "position": "absolute",
+                                            "alignY": "center",
+                                            "thumbWidth": {
+                                                "value": 24,
+                                                "unit": "px"
+                                            },
+                                            "thumbHeight": {
+                                                "value": 24,
+                                                "unit": "px"
+                                            },
+                                            "thumbRadius": {
+                                                "value": 16,
+                                                "unit": "px"
+                                            },
+                                            "thumbColor": "#000000",
+                                            "trackColor": "transparent"
                                         },
                                         "ports": [],
                                         "dynamicports": [],
@@ -3464,8 +3477,8 @@
                         "id": "bc17c0c5-f9ac-ba36-482e-2eec15ab1c7d",
                         "type": "String Format",
                         "label": "String Format",
-                        "x": -255.99961952784184,
-                        "y": 256.8615635734283,
+                        "x": -246.94231724809532,
+                        "y": 339.50944687611496,
                         "parameters": {
                             "format": "{V} / {Max}"
                         },
@@ -3514,8 +3527,8 @@
                     {
                         "id": "637a5b0f-168b-c195-29e0-eb39d203a491",
                         "type": "Number",
-                        "x": -498.878094408867,
-                        "y": 158.98511370917225,
+                        "x": -500.01025719383534,
+                        "y": 218.98974131249273,
                         "parameters": {
                             "value": 100
                         },
@@ -3775,8 +3788,8 @@
                         "id": "58bd57f8-14f5-92ed-ac5d-9286443ff6a4",
                         "type": "Boolean To String",
                         "label": "Boolean To String",
-                        "x": 477.0057953455232,
-                        "y": 222.40099127805559,
+                        "x": 530.217446239034,
+                        "y": 259.76236318200984,
                         "parameters": {
                             "trueString": "Yes",
                             "falseString": "No"
@@ -4068,40 +4081,7 @@
                                                 },
                                                 "ports": [],
                                                 "dynamicports": [],
-                                                "children": [
-                                                    {
-                                                        "id": "4a546899-bab6-5b3f-4fe6-9dcf33aea159",
-                                                        "type": "Group",
-                                                        "label": "Progressbar Handle",
-                                                        "x": 20,
-                                                        "y": 95,
-                                                        "parameters": {
-                                                            "width": {
-                                                                "value": 16,
-                                                                "unit": "px"
-                                                            },
-                                                            "height": {
-                                                                "value": 16,
-                                                                "unit": "px"
-                                                            },
-                                                            "backgroundColor": "Primary - Base",
-                                                            "borderRadius": {
-                                                                "value": 50,
-                                                                "unit": "px"
-                                                            },
-                                                            "alignY": "center",
-                                                            "position": "absolute",
-                                                            "alignX": "right",
-                                                            "transformX": {
-                                                                "value": 8,
-                                                                "unit": "px"
-                                                            }
-                                                        },
-                                                        "ports": [],
-                                                        "dynamicports": [],
-                                                        "children": []
-                                                    }
-                                                ]
+                                                "children": []
                                             }
                                         ]
                                     },
@@ -4110,12 +4090,27 @@
                                         "type": "net.noodl.formkit.range",
                                         "label": "Hidden native range input",
                                         "x": 20,
-                                        "y": 305,
+                                        "y": 246,
                                         "parameters": {
-                                            "opacity": 0,
                                             "styleType": "css",
+                                            "alignY": "center",
+                                            "thumbWidth": {
+                                                "value": 16,
+                                                "unit": "px"
+                                            },
+                                            "thumbHeight": {
+                                                "value": 16,
+                                                "unit": "px"
+                                            },
+                                            "thumbRadius": {
+                                                "value": 8,
+                                                "unit": "px"
+                                            },
                                             "position": "absolute",
-                                            "alignY": "center"
+                                            "trackHeight": {
+                                                "value": 6,
+                                                "unit": "px"
+                                            }
                                         },
                                         "ports": [],
                                         "dynamicports": [],
@@ -4338,10 +4333,48 @@
                     "height": "auto"
                 }
             }
+        },
+        {
+            "name": "/Test2",
+            "id": "840802b7-85e4-fefc-8f48-aac1bf22346c",
+            "graph": {
+                "connections": [],
+                "roots": [
+                    {
+                        "id": "e88e41da-b00e-2f93-0d8a-9e6847933164",
+                        "type": "Group",
+                        "x": 0,
+                        "y": 0,
+                        "parameters": {
+                            "backgroundColor": "#FFFFFF"
+                        },
+                        "ports": [],
+                        "dynamicports": [],
+                        "children": [
+                            {
+                                "id": "2d7b5f29-347a-baef-6a2e-3af286f296ac",
+                                "type": "net.noodl.formkit.range",
+                                "x": 20,
+                                "y": 46,
+                                "parameters": {},
+                                "ports": [],
+                                "dynamicports": [],
+                                "children": []
+                            }
+                        ]
+                    }
+                ]
+            },
+            "metadata": {
+                "canvasPos": {
+                    "x": 442.8506444563617,
+                    "y": 1.00893430822563
+                }
+            }
         }
     ],
     "settings": {},
-    "rootNodeId": "7f11efa2-480b-35e3-a623-7d3915c7729c",
+    "rootNodeId": "e8570140-710c-df7f-2314-faa1656a4f9c",
     "version": "1",
     "metadata": {
         "dbCollections": [],
@@ -4397,7 +4430,7 @@
                     }
                 },
                 "SDS - H2 Text": {
-                    "fontFamily": "Roboto/Roboto-Medium.ttf",
+                    "fontFamily": "Arial",
                     "fontSize": {
                         "value": "36",
                         "unit": "px"
