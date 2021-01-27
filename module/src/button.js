@@ -74,6 +74,55 @@ var ButtonNode = {
             type: 'color',
             default: '#000000'
         },
+
+        // Border styles
+        borderRadius: {
+            index: 202,
+            displayName: 'Border Radius',
+            group: 'Style',
+            type: {
+                name: 'number',
+                units: ['px'],
+                defaultUnit: 'px'
+            },
+            default: 0,
+            applyDefault: false
+        },
+        borderStyle: {
+            index: 203,
+            displayName: 'Border Style',
+            group: 'Style',
+            type: {
+                name: 'enum',
+                enums: [
+                    {label: 'None', value: 'none'},
+                    {label: 'Solid', value: 'solid'},
+                    {label: 'Dotted', value: 'dotted'},
+                    {label: 'Dashed', value: 'dashed'}
+                ]
+            },
+            default: 'none',
+            applyDefault: false
+        },
+        borderWidth: {
+            index: 204,
+            displayName: 'Border Width',
+            group: 'Style',
+            type: {
+                name: 'number',
+                units: ['px'],
+                defaultUnit: 'px'
+            },
+            default: 0,
+            applyDefault: false
+        },
+        borderColor: {
+            index: 205,
+            displayName: 'Border Color',
+            group: 'Style',
+            type: 'color',
+            default: '#000000'
+        }
     },
 	inputProps: {
         label:{type:'string',displayName:'Label',group:'General'},
@@ -96,6 +145,5 @@ var ButtonNode = {
 }
 Utils.addFontStyling(ButtonNode);
 Utils.addVisibilityUtils(ButtonNode)
-Utils.addBorderStyles(ButtonNode)
 ButtonNode = Noodl.defineReactNode(ButtonNode);
 export default ButtonNode;

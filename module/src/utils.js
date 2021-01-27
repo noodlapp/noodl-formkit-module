@@ -114,7 +114,7 @@ function addVisibilityUtils(def) {
     })
 }
 
-function addBorderStyles(def) {
+/*function addBorderStyles(def) {
     def.inputCss = Object.assign(def.inputCss || {}, {
         borderRadius: {
             index: 202,
@@ -164,7 +164,7 @@ function addBorderStyles(def) {
             default: '#000000'
         }
     })
-}
+}*/
 
 function guid() {
     function s4() {
@@ -215,7 +215,7 @@ function updateStylesForClass(_class,props,_styleTemplate) {
 export default {
     addFontStyling,
     addVisibilityUtils,
-    addBorderStyles,
+    //addBorderStyles,
     guid,
     updateStylesForClass
 }

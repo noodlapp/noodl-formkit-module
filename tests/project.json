@@ -4515,6 +4515,36 @@
                                 "ports": [],
                                 "dynamicports": [],
                                 "children": []
+                            },
+                            {
+                                "id": "5fffacd7-2785-987d-fb9c-2f6294db59c3",
+                                "type": "net.noodl.formkit.button",
+                                "x": 20,
+                                "y": 450,
+                                "parameters": {
+                                    "label": "Button",
+                                    "textStyle": "SDS - Button Label",
+                                    "paddingTop": {
+                                        "value": 10,
+                                        "unit": "px"
+                                    },
+                                    "paddingBottom": {
+                                        "value": 10,
+                                        "unit": "px"
+                                    },
+                                    "sizeMode": "contentSize",
+                                    "paddingLeft": {
+                                        "value": 20,
+                                        "unit": "px"
+                                    },
+                                    "paddingRight": {
+                                        "value": 20,
+                                        "unit": "px"
+                                    }
+                                },
+                                "ports": [],
+                                "dynamicports": [],
+                                "children": []
                             }
                         ]
                     },
