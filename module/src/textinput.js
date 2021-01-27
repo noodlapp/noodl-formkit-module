@@ -49,8 +49,8 @@ function TextInput(props, ref) {
 					setText(e.target.value);
 					props.textChanged && props.textChanged(e.target.value);
 				}}
-				onFocus={e => props.enabled && props.focusChanged && props.focusChanged(true)}
-                onBlur={e => props.enabled && props.focusChanged && props.focusChanged(false)}
+				onFocus={(e) => {props.enabled && props.focusChanged && props.focusChanged(true); props.enabled && props.onFocused && props.onFocused()}}
+                onBlur={(e) => {props.enabled && props.focusChanged && props.focusChanged(false); props.enabled && props.onBlurred && props.onBlurred()}}
                 onMouseEnter={() => props.enabled && props.hoverChanged && props.hoverChanged(true)}
                 onMouseLeave={() => props.enabled && props.hoverChanged && props.hoverChanged(false)}
 	/>
@@ -157,7 +157,9 @@ var TextInputNode = {
 			displayName: 'Text',
 			group:'General'
 		},
-        focusChanged: {type: 'boolean', displayName: 'Focused', group:'States'},
+        focusChanged: {type: 'boolean', displayName: 'Is Focused', group:'States'},
+        onFocused: {type: 'signal', displayName: 'Focused', group:'Events'},
+        onBlurred: {type: 'signal', displayName: 'Blurred', group:'Events'},
         hoverChanged: {type: 'boolean', displayName: 'Hover', group:'States'}
 	},
 	frame:{

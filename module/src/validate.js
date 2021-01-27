@@ -3,6 +3,20 @@ import * as yup from 'yup'
 
 const _schemaFuncs = {}; // Cache for schema functions, optimization
 
+function _createSignal(args) {
+
+    var currentValue = false;
+
+    return function (value) {
+        value = value ? true : false;
+        //value changed from false to true
+        if (value && currentValue === false) {
+            args.valueChangedToTrue.call(this);
+        }
+        currentValue = value;
+    };
+}
+
 const ValidateNode = Noodl.defineNode({
 	category:'Form Kit',
 	name:'noodl.net.formkit.validate',
@@ -29,7 +43,8 @@ const ValidateNode = Noodl.defineNode({
 		this.propertyValues = {}
 		this.propertyOutputValues = {}
 		this.errors = {}
-		this.hasError = {}
+        this.hasError = {}
+        this.propertyDisabled = {}
 	},
 	changed:{
 		Schema:function(script) {
@@ -77,35 +92,39 @@ const ValidateNode = Noodl.defineNode({
 				}
 
 				if(this.inputs.Enabled === false) {
-					// If the node is disabled, act as if everything is validated
+					// If the node is disabled, do not output any error messages, but otherwise nothing is valid
 					for(var key in this.schema) {
 						this.hasError[key] = false;
 						this.errors[key] = "";
 						if(this.hasOutput('err-' + key)) this.flagOutputDirty('err-' + key);
-						if(this.hasOutput('valid-' + key)) this.flagOutputDirty('valid-' + key);
+						if(this.hasOutput('haserr-' + key)) this.flagOutputDirty('haserr-' + key);
 					}
-					this.outputs.IsValid = true;
+					this.outputs.IsValid = false;
 					this.flagOutputDirty('IsValid');
 					return;
 				}
 
 				if(this.schema !== undefined) {
 					yup.object().shape(this.schema).validate(this.propertyValues,{abortEarly:false}).then((cast) => {
+                        // The object was successfully validated
+
 						for(var key in this.schema) { // Clear errors
 							this.hasError[key] = false;
 							this.errors[key] = "";
 							if(this.hasOutput('err-' + key)) this.flagOutputDirty('err-' + key);
-							if(this.hasOutput('valid-' + key)) this.flagOutputDirty('valid-' + key);
+							if(this.hasOutput('haserr-' + key)) this.flagOutputDirty('haserr-' + key);
 						}
 						this.outputs.IsValid = true;
 						this.flagOutputDirty('IsValid');
 
+                        // Output properties 
 						for(var key in cast) {
 							this.propertyOutputValues[key] = cast[key];
 							if(this.hasOutput('prop-' + key)) this.flagOutputDirty('prop-' + key);
 						}
 					})
 					.catch((errs) => {
+                        // There was an error when validating
 						this.outputs.IsValid = false;
 						this.flagOutputDirty('IsValid');
 
@@ -115,7 +134,10 @@ const ValidateNode = Noodl.defineNode({
 						}
 
 						for(var prop in errs.inner) {
-							var err = errs.inner[prop];
+                            var err = errs.inner[prop];
+                            
+                            if(this.propertyDisabled[err.path]) continue; // Don't output errors for disabled properties
+
 							this.errors[err.path] = err.errors.join(' ');
 							this.hasError[err.path] = true;
 						}
@@ -123,7 +145,7 @@ const ValidateNode = Noodl.defineNode({
 						for(var key in this.schema) {
 							if(this.hasOutput('err-' + key)) this.flagOutputDirty('err-' + key);
 
-							if(this.hasOutput('valid-' + key)) this.flagOutputDirty('valid-' + key);
+							if(this.hasOutput('haserr-' + key)) this.flagOutputDirty('haserr-' + key);
 						}
 
 					})
@@ -136,16 +158,28 @@ const ValidateNode = Noodl.defineNode({
 		},
 		getPropertyValue:function(name) {
 			return this.propertyOutputValues[name];
-		},
+        },
+        setPropertyEnabled:function(name,value) {
+            this.propertyDisabled[name] = (value==undefined)?false:(!value);
+            this.scheduleValidate();
+        },
+        enableProperty:function(name) {
+            this.propertyDisabled[name] = false;
+            this.scheduleValidate();
+        },
+        disableProperty:function(name) {
+            this.propertyDisabled[name] = true;
+            this.scheduleValidate();
+        },        
 		getError:function(name) {
 			return this.errors[name];
 		},
 		getHasError:function(name) {
 			return this.hasError[name];
 		},
-		getIsValid:function(name) {
+	/*	getIsValid:function(name) {
 			return !this.hasError[name];
-		},
+		},*/
 		registerInputIfNeeded: function (name) {
 			if (this.hasInput(name)) {
 				return;
@@ -153,7 +187,23 @@ const ValidateNode = Noodl.defineNode({
 
 			if(name.startsWith('prop-')) this.registerInput(name, {
 				set: this.setPropertyValue.bind(this, name.substring('prop-'.length))
-			})
+            })
+            
+            if(name.startsWith('enabled-')) this.registerInput(name, {
+				set: this.setPropertyEnabled.bind(this, name.substring('enabled-'.length))
+            })
+            
+            if (name.startsWith('enable-')) return this.registerInput(name, {
+                set: _createSignal({
+                    valueChangedToTrue: this.enableProperty.bind(this, name.substring('enable-'.length))
+                })
+            })
+
+            if (name.startsWith('disable-')) return this.registerInput(name, {
+                set: _createSignal({
+                    valueChangedToTrue: this.disableProperty.bind(this, name.substring('disable-'.length))
+                })
+            })
 		},
 		registerOutputIfNeeded: function (name) {
 			if (this.hasOutput(name)) {
@@ -168,8 +218,8 @@ const ValidateNode = Noodl.defineNode({
 				getter: this.getError.bind(this, name.substring('err-'.length))
 			})	
 			
-			if(name.startsWith('valid-')) this.registerOutput(name, {
-				getter: this.getIsValid.bind(this, name.substring('valid-'.length))
+			if(name.startsWith('haserr-')) this.registerOutput(name, {
+				getter: this.getHasError.bind(this, name.substring('haserr-'.length))
 			})	
 		},
 	},
@@ -230,13 +280,41 @@ const ValidateNode = Noodl.defineNode({
 								})							
 
 								ports.push({ // An is valid output for each property
-									name:'valid-'+key,
-									editorName:key + ' Is Valid',
+									name:'haserr-'+key,
+									editorName:key + ' Has Error',
 									displayName:key,
-									group:'Is Valid',
+									group:'Has Error',
 									type:'boolean',
 									plug:'output',
-								})	
+                                })	
+                                
+                                ports.push({ // Boolean if a certain property is valid or not
+									name:'enabled-'+key,
+									editorName:key + ' Enabled',
+									displayName:key,
+									group:'Property Enabled',
+									type:'boolean',
+                                    plug:'input',
+                                    default:true,
+                                })
+                                
+                                ports.push({ // Signal to enable a certain property
+									name:'enable-'+key,
+									editorName:'Enable ' + key,
+									displayName:'Enable ' + key,
+									group:'Actions',
+									type:'signal',
+                                    plug:'input',
+                                })
+                                
+                                ports.push({ // Signal to disable a certain property
+									name:'disable-'+key,
+									editorName:'Disable ' + key,
+									displayName:'Disable ' + key,
+									group:'Actions',
+									type:'signal',
+                                    plug:'input',
+								})
 							}
 
 						}

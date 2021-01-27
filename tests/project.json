@@ -77,6 +77,12 @@
                         "fromProperty": "Value",
                         "toId": "35a07866-90cb-aff7-985f-b70a96f6f8fa",
                         "toProperty": "prop-Choice"
+                    },
+                    {
+                        "fromId": "91ab624e-117f-17f7-d175-1c5fdb272303",
+                        "fromProperty": "Blurred",
+                        "toId": "35a07866-90cb-aff7-985f-b70a96f6f8fa",
+                        "toProperty": "enable-Name"
                     }
                 ],
                 "roots": [
@@ -334,7 +340,9 @@
                         "y": 534.6946371974863,
                         "parameters": {
                             "Schema": "schema({\n    Name:string().required('Must enter name'),\n    Character:string().required('Must select character'),\n    Choice:string().required()\n})",
-                            "Enabled": true
+                            "Enabled": true,
+                            "enabled-Name": false,
+                            "enabled-Character": false
                         },
                         "ports": [],
                         "dynamicports": [
@@ -356,13 +364,41 @@
                                 "index": 4
                             },
                             {
-                                "name": "valid-Name",
-                                "editorName": "Name Is Valid",
+                                "name": "haserr-Name",
+                                "editorName": "Name Has Error",
                                 "displayName": "Name",
-                                "group": "Is Valid",
+                                "group": "Has Error",
                                 "type": "boolean",
                                 "plug": "output",
                                 "index": 5
+                            },
+                            {
+                                "name": "enabled-Name",
+                                "editorName": "Name Enabled",
+                                "displayName": "Name",
+                                "group": "Property Enabled",
+                                "type": "boolean",
+                                "plug": "input",
+                                "default": true,
+                                "index": 6
+                            },
+                            {
+                                "name": "enable-Name",
+                                "editorName": "Enable Name",
+                                "displayName": "Enable Name",
+                                "group": "Actions",
+                                "type": "signal",
+                                "plug": "input",
+                                "index": 7
+                            },
+                            {
+                                "name": "disable-Name",
+                                "editorName": "Disable Name",
+                                "displayName": "Disable Name",
+                                "group": "Actions",
+                                "type": "signal",
+                                "plug": "input",
+                                "index": 8
                             },
                             {
                                 "name": "prop-Character",
@@ -370,7 +406,7 @@
                                 "group": "Properties",
                                 "type": "*",
                                 "plug": "input/output",
-                                "index": 6
+                                "index": 9
                             },
                             {
                                 "name": "err-Character",
@@ -379,16 +415,44 @@
                                 "group": "Errors",
                                 "type": "string",
                                 "plug": "output",
-                                "index": 7
+                                "index": 10
                             },
                             {
-                                "name": "valid-Character",
-                                "editorName": "Character Is Valid",
+                                "name": "haserr-Character",
+                                "editorName": "Character Has Error",
                                 "displayName": "Character",
-                                "group": "Is Valid",
+                                "group": "Has Error",
                                 "type": "boolean",
                                 "plug": "output",
-                                "index": 8
+                                "index": 11
+                            },
+                            {
+                                "name": "enabled-Character",
+                                "editorName": "Character Enabled",
+                                "displayName": "Character",
+                                "group": "Property Enabled",
+                                "type": "boolean",
+                                "plug": "input",
+                                "default": true,
+                                "index": 12
+                            },
+                            {
+                                "name": "enable-Character",
+                                "editorName": "Enable Character",
+                                "displayName": "Enable Character",
+                                "group": "Actions",
+                                "type": "signal",
+                                "plug": "input",
+                                "index": 13
+                            },
+                            {
+                                "name": "disable-Character",
+                                "editorName": "Disable Character",
+                                "displayName": "Disable Character",
+                                "group": "Actions",
+                                "type": "signal",
+                                "plug": "input",
+                                "index": 14
                             },
                             {
                                 "name": "prop-Choice",
@@ -396,7 +460,7 @@
                                 "group": "Properties",
                                 "type": "*",
                                 "plug": "input/output",
-                                "index": 9
+                                "index": 15
                             },
                             {
                                 "name": "err-Choice",
@@ -405,16 +469,44 @@
                                 "group": "Errors",
                                 "type": "string",
                                 "plug": "output",
-                                "index": 10
+                                "index": 16
                             },
                             {
-                                "name": "valid-Choice",
-                                "editorName": "Choice Is Valid",
+                                "name": "haserr-Choice",
+                                "editorName": "Choice Has Error",
                                 "displayName": "Choice",
-                                "group": "Is Valid",
+                                "group": "Has Error",
                                 "type": "boolean",
                                 "plug": "output",
-                                "index": 11
+                                "index": 17
+                            },
+                            {
+                                "name": "enabled-Choice",
+                                "editorName": "Choice Enabled",
+                                "displayName": "Choice",
+                                "group": "Property Enabled",
+                                "type": "boolean",
+                                "plug": "input",
+                                "default": true,
+                                "index": 18
+                            },
+                            {
+                                "name": "enable-Choice",
+                                "editorName": "Enable Choice",
+                                "displayName": "Enable Choice",
+                                "group": "Actions",
+                                "type": "signal",
+                                "plug": "input",
+                                "index": 19
+                            },
+                            {
+                                "name": "disable-Choice",
+                                "editorName": "Disable Choice",
+                                "displayName": "Disable Choice",
+                                "group": "Actions",
+                                "type": "signal",
+                                "plug": "input",
+                                "index": 20
                             }
                         ],
                         "children": []
@@ -524,6 +616,12 @@
                         "fromProperty": "Type",
                         "toId": "f50c4474-2374-9ad3-eb95-15a820ed350a",
                         "toProperty": "type"
+                    },
+                    {
+                        "fromId": "f50c4474-2374-9ad3-eb95-15a820ed350a",
+                        "fromProperty": "onBlurred",
+                        "toId": "49b82da7-a202-3cad-a908-5891de00b4b5",
+                        "toProperty": "Blurred"
                     }
                 ],
                 "roots": [
@@ -662,8 +760,8 @@
                     {
                         "id": "49b82da7-a202-3cad-a908-5891de00b4b5",
                         "type": "Component Outputs",
-                        "x": 267.237479075451,
-                        "y": 209.99701967776323,
+                        "x": 291.237479075451,
+                        "y": 161.99701967776323,
                         "parameters": {},
                         "ports": [
                             {
@@ -673,6 +771,14 @@
                                     "name": "*"
                                 },
                                 "index": 1
+                            },
+                            {
+                                "name": "Blurred",
+                                "plug": "input",
+                                "type": {
+                                    "name": "*"
+                                },
+                                "index": 2
                             }
                         ],
                         "dynamicports": [],
@@ -1117,11 +1223,11 @@
                             {
                                 "id": "fcc3c541-7fa9-2d7b-5fc0-8c767b05b488",
                                 "type": "net.noodl.formkit.label",
-                                "x": -58,
-                                "y": -42.5,
+                                "x": 20,
+                                "y": 46,
                                 "parameters": {
                                     "text": "Label",
-                                    "fontFamily": "OpenSans-Regular.ttf"
+                                    "textStyle": "SDS - Label Text"
                                 },
                                 "ports": [],
                                 "dynamicports": [],
@@ -1630,7 +1736,7 @@
                                         "value": 10,
                                         "unit": "px"
                                     },
-                                    "textStyle": "SDS - H2 Text"
+                                    "textStyle": "SDS - Label Text"
                                 },
                                 "ports": [],
                                 "dynamicports": [],
@@ -1643,7 +1749,6 @@
                                 "y": 148,
                                 "parameters": {
                                     "sizeMode": "contentHeight",
-                                    "borderStyle": "solid",
                                     "borderWidth": {
                                         "value": 1,
                                         "unit": "px"
@@ -4571,7 +4676,7 @@
         }
     ],
     "settings": {},
-    "rootNodeId": "e88e41da-b00e-2f93-0d8a-9e6847933164",
+    "rootNodeId": "e8570140-710c-df7f-2314-faa1656a4f9c",
     "version": "1",
     "metadata": {
         "dbCollections": [],
