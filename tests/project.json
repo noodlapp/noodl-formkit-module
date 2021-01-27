@@ -4338,7 +4338,14 @@
             "name": "/Test2",
             "id": "840802b7-85e4-fefc-8f48-aac1bf22346c",
             "graph": {
-                "connections": [],
+                "connections": [
+                    {
+                        "fromId": "38ae38d3-d2f8-c345-003a-607f7844c700",
+                        "fromProperty": "items",
+                        "toId": "38fa1587-1885-8727-12b6-98a6765abe6f",
+                        "toProperty": "items"
+                    }
+                ],
                 "roots": [
                     {
                         "id": "e88e41da-b00e-2f93-0d8a-9e6847933164",
@@ -4354,11 +4361,40 @@
                             "paddingTop": {
                                 "value": 10,
                                 "unit": "px"
+                            },
+                            "paddingRight": {
+                                "value": 10,
+                                "unit": "px"
                             }
                         },
                         "ports": [],
                         "dynamicports": [],
                         "children": [
+                            {
+                                "id": "f8734d02-10a6-3326-2b1d-85834cf8ce7a",
+                                "type": "Text",
+                                "x": 20,
+                                "y": 46,
+                                "parameters": {
+                                    "fontFamily": "OpenSans-Bold.ttf"
+                                },
+                                "ports": [],
+                                "dynamicports": [],
+                                "children": []
+                            },
+                            {
+                                "id": "9e352c92-15c8-8794-ba04-627f9f425ffd",
+                                "type": "net.noodl.formkit.label",
+                                "x": 20,
+                                "y": 92,
+                                "parameters": {
+                                    "textStyle": "SDS - H2 Text",
+                                    "text": "A Label"
+                                },
+                                "ports": [],
+                                "dynamicports": [],
+                                "children": []
+                            },
                             {
                                 "id": "d25cac21-25e5-5baf-1719-1bc671c7f298",
                                 "type": "net.noodl.formkit.checkbox",
@@ -4449,8 +4485,50 @@
                                         "children": []
                                     }
                                 ]
+                            },
+                            {
+                                "id": "38fa1587-1885-8727-12b6-98a6765abe6f",
+                                "type": "net.noodl.formkit.options",
+                                "x": 20,
+                                "y": 322,
+                                "parameters": {
+                                    "paddingTop": {
+                                        "value": 5,
+                                        "unit": "px"
+                                    },
+                                    "paddingBottom": {
+                                        "value": 5,
+                                        "unit": "px"
+                                    },
+                                    "paddingLeft": {
+                                        "value": 10,
+                                        "unit": "px"
+                                    },
+                                    "paddingRight": {
+                                        "value": 10,
+                                        "unit": "px"
+                                    },
+                                    "backgroundColor": "transparent",
+                                    "borderColor": "#000000",
+                                    "textStyle": "SDS - body text"
+                                },
+                                "ports": [],
+                                "dynamicports": [],
+                                "children": []
                             }
                         ]
+                    },
+                    {
+                        "id": "38ae38d3-d2f8-c345-003a-607f7844c700",
+                        "type": "Static Data",
+                        "x": -246.78891977975314,
+                        "y": 226.28276494656816,
+                        "parameters": {
+                            "csv": "Label,Value\nBig,1\nMedium,2\nSmall,3"
+                        },
+                        "ports": [],
+                        "dynamicports": [],
+                        "children": []
                     }
                 ]
             },

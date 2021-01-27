@@ -51,6 +51,10 @@ function addFontStyling(def) {
                 this.forceUpdate();
             }
         },
+        textStyle(value) {
+            this.props.textStyle = this.context.styles.getTextStyle(value);
+            this.forceUpdate();
+        },
         items(newValue) {
             if (this._items !== newValue && this._items !== undefined) {
                 this._items.off('change', this._itemsChanged);

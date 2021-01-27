@@ -52,7 +52,8 @@ var OptionsNode = {
 		return Options;
 	},
 	frame:{
-		dimensions:{defaultSizeMode: 'contentHeight', contentLabel: 'Text'},
+        dimensions:{defaultSizeMode: 'contentHeight', contentLabel: 'Text'},
+        padding:true,
 		margins:true,
 		position:true,
 		align:true
@@ -92,6 +93,55 @@ var OptionsNode = {
             type: 'color',
             default: 'transparent'
         },
+
+        // Border styles
+        borderRadius: {
+            index: 202,
+            displayName: 'Border Radius',
+            group: 'Style',
+            type: {
+                name: 'number',
+                units: ['px'],
+                defaultUnit: 'px'
+            },
+            default: 0,
+            applyDefault: false
+        },
+        borderStyle: {
+            index: 203,
+            displayName: 'Border Style',
+            group: 'Style',
+            type: {
+                name: 'enum',
+                enums: [
+                    {label: 'None', value: 'none'},
+                    {label: 'Solid', value: 'solid'},
+                    {label: 'Dotted', value: 'dotted'},
+                    {label: 'Dashed', value: 'dashed'}
+                ]
+            },
+            default: 'solid',
+            applyDefault: false
+        },
+        borderWidth: {
+            index: 204,
+            displayName: 'Border Width',
+            group: 'Style',
+            type: {
+                name: 'number',
+                units: ['px'],
+                defaultUnit: 'px'
+            },
+            default: 1,
+            applyDefault: false
+        },
+        borderColor: {
+            index: 205,
+            displayName: 'Border Color',
+            group: 'Style',
+            type: 'color',
+            default: '#000000'
+        }
 	},
 	outputProps: {
 		valueChanged:{type:'string',displayName:'Value',group:'General'},
