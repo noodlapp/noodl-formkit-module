@@ -6,25 +6,6 @@ import {
 	useState,
 } from 'react';
 
-function _shallowCompare(o1, o2){
-    for(var p in o1){
-        if(o1.hasOwnProperty(p)){
-            if(o1[p] !== o2[p]){
-                return false;
-            }
-        }
-    }
-    for(var p in o2){
-        if(o2.hasOwnProperty(p)){
-            if(o1[p] !== o2[p]){
-                return false;
-            }
-        }
-    }
-    return true;
-}
- 
-const _styleSheets = {}
 function _styleTemplate(_class,props) {
     return `
     .${_class}::-webkit-slider-thumb {
@@ -97,24 +78,6 @@ function _styleTemplate(_class,props) {
     }    
     `;
 }
-function _updateStylesForClass(_class,props) {
-    if(_styleSheets[_class]) {
-        // Check if props have changed
-        if(!_shallowCompare(props,_styleSheets[_class].props)) {
-            _styleSheets[_class].style.innerHTML = _styleTemplate(_class,props);
-            _styleSheets[_class].props = Object.assign({},props);
-        }
-    }
-    else {
-        // Create a new style sheet if none exists
-        var style=document.createElement('style');
-        style.innerHTML = _styleTemplate(_class,props);
-        document.head.appendChild(style);
-
-        _styleSheets[_class] = {style,props:Object.assign({},props)}
-    }
-    
-}
 
 // --------------------------------------------------------------------------------------
 // Range
@@ -139,7 +102,7 @@ function Range(props) {
 
     const tagProps = {id:props.id,min:props.min,max:props.max,step:props.step,style:props.style};
 
-    _updateStylesForClass("ndl-formkit-range-"+props._nodeId,props);
+    Utils.updateStylesForClass("ndl-formkit-range-"+props._nodeId,props,_styleTemplate);
     return <input className={"ndl-formkit-range-"+props._nodeId + " ndl-formkit-range"} type="range" {...tagProps} value={value} disabled={!props.enabled} 
         onChange = {e => {
             setValue(e.target.value);

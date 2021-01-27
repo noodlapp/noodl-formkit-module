@@ -1,80 +1,3 @@
-
-/*
-        color: {
-            index: 24,
-            group: 'Text',
-            displayName: 'Color',
-            type: 'color'
-        },
-        letterSpacing: {
-            index: 25,
-            group: 'Text',
-            displayName: 'Letter Spacing',
-            type: 'number'
-        },
-        lineHeight: {
-            index: 26,
-            group: 'Text',
-            displayName: 'Line Height',
-            type: 'number',
-            onChange() {
-                if(this.props.textStyle) {
-                    this.forceUpdate();
-                }
-            }
-        },*/
-/*
-function _addBorderStyling(def) {
-    def.inputCss = Object.assign(def.inputCss||{},{
-        borderRadius: {
-            index: 202,
-            displayName: 'Border Radius',
-            group: 'Style',
-            type: {
-                name: 'number',
-                units: ['px'],
-                defaultUnit: 'px'
-            },
-            default: 0,
-            applyDefault: false
-        },
-        borderStyle: {
-            index: 203,
-            displayName: 'Border Style',
-            group: 'Style',
-            type: {
-                name: 'enum',
-                enums: [
-                    {label: 'None', value: 'none'},
-                    {label: 'Solid', value: 'solid'},
-                    {label: 'Dotted', value: 'dotted'},
-                    {label: 'Dashed', value: 'dashed'}
-                ]
-            },
-            default: 'none',
-            applyDefault: false
-        },
-        borderWidth: {
-            index: 204,
-            displayName: 'Border Width',
-            group: 'Style',
-            type: {
-                name: 'number',
-                units: ['px'],
-                defaultUnit: 'px'
-            },
-            default: 0,
-            applyDefault: false
-        },
-        borderColor: {
-            index: 205,
-            displayName: 'Border Color',
-            group: 'Style',
-            type: 'color'
-        }	
-    })
-}*/
-
 function addFontStyling(def) {
     def.inputs = Object.assign(def.inputs || {}, {
         textStyle: {
@@ -198,7 +121,7 @@ function addBorderStyles(def) {
                 units: ['px'],
                 defaultUnit: 'px'
             },
-            default: 0,
+            default: 2,
             applyDefault: false
         },
         borderStyle: {
@@ -214,7 +137,7 @@ function addBorderStyles(def) {
                     {label: 'Dashed', value: 'dashed'}
                 ]
             },
-            default: 'none',
+            default: 'solid',
             applyDefault: false
         },
         borderWidth: {
@@ -226,14 +149,15 @@ function addBorderStyles(def) {
                 units: ['px'],
                 defaultUnit: 'px'
             },
-            default: 0,
+            default: 1,
             applyDefault: false
         },
         borderColor: {
             index: 205,
             displayName: 'Border Color',
             group: 'Style',
-            type: 'color'
+            type: 'color',
+            default: '#000000'
         }
     })
 }
@@ -243,11 +167,51 @@ function guid() {
         return Math.floor((1 + Math.random()) * 0x10000) .toString(16) .substring(1);
     }
     return s4() + s4() + s4() + s4() + s4() + s4();
-  }
+}
+
+function _shallowCompare(o1, o2){
+    for(var p in o1){
+        if(o1.hasOwnProperty(p)){
+            if(o1[p] !== o2[p]){
+                return false;
+            }
+        }
+    }
+    for(var p in o2){
+        if(o2.hasOwnProperty(p)){
+            if(o1[p] !== o2[p]){
+                return false;
+            }
+        }
+    }
+    return true;
+}
+ 
+const _styleSheets = {}
+
+function updateStylesForClass(_class,props,_styleTemplate) {
+    if(_styleSheets[_class]) {
+        // Check if props have changed
+        if(!_shallowCompare(props,_styleSheets[_class].props)) {
+            _styleSheets[_class].style.innerHTML = _styleTemplate(_class,props);
+            _styleSheets[_class].props = Object.assign({},props);
+        }
+    }
+    else {
+        // Create a new style sheet if none exists
+        var style=document.createElement('style');
+        style.innerHTML = _styleTemplate(_class,props);
+        document.head.appendChild(style);
+
+        _styleSheets[_class] = {style,props:Object.assign({},props)}
+    }
+    
+}
 
 export default {
     addFontStyling,
     addVisibilityUtils,
     addBorderStyles,
-    guid
+    guid,
+    updateStylesForClass
 }

@@ -4346,20 +4346,109 @@
                         "x": 0,
                         "y": 0,
                         "parameters": {
-                            "backgroundColor": "#FFFFFF"
+                            "backgroundColor": "#FFFFFF",
+                            "paddingLeft": {
+                                "value": 10,
+                                "unit": "px"
+                            },
+                            "paddingTop": {
+                                "value": 10,
+                                "unit": "px"
+                            }
                         },
                         "ports": [],
                         "dynamicports": [],
                         "children": [
                             {
-                                "id": "2d7b5f29-347a-baef-6a2e-3af286f296ac",
-                                "type": "net.noodl.formkit.range",
+                                "id": "d25cac21-25e5-5baf-1719-1bc671c7f298",
+                                "type": "net.noodl.formkit.checkbox",
                                 "x": 20,
                                 "y": 46,
-                                "parameters": {},
+                                "parameters": {
+                                    "width": {
+                                        "value": 50,
+                                        "unit": "px"
+                                    },
+                                    "height": {
+                                        "value": 50,
+                                        "unit": "px"
+                                    },
+                                    "borderWidth": {
+                                        "value": 2,
+                                        "unit": "px"
+                                    },
+                                    "borderRadius": {
+                                        "value": 5,
+                                        "unit": "px"
+                                    },
+                                    "borderColor": "#A92952",
+                                    "checkedBackgroundColor": "#E8423A"
+                                },
                                 "ports": [],
                                 "dynamicports": [],
                                 "children": []
+                            },
+                            {
+                                "id": "3181351c-7276-fa44-1e2f-2a61259d9515",
+                                "type": "net.noodl.formkit.range",
+                                "x": 20,
+                                "y": 92,
+                                "parameters": {
+                                    "thumbWidth": {
+                                        "value": 25,
+                                        "unit": "px"
+                                    },
+                                    "thumbHeight": {
+                                        "value": 10,
+                                        "unit": "px"
+                                    },
+                                    "trackHeight": {
+                                        "value": 10,
+                                        "unit": "px"
+                                    },
+                                    "thumbColor": "#A92952",
+                                    "height": {
+                                        "value": 30,
+                                        "unit": "px"
+                                    }
+                                },
+                                "ports": [],
+                                "dynamicports": [],
+                                "children": []
+                            },
+                            {
+                                "id": "19c7989b-3a15-0c0e-8d7b-4beca341ab82",
+                                "type": "net.noodl.formkit.radiobuttongroup",
+                                "x": 20,
+                                "y": 138,
+                                "parameters": {},
+                                "ports": [],
+                                "dynamicports": [],
+                                "children": [
+                                    {
+                                        "id": "7f4476b0-301f-b700-c845-b1967f45dfd5",
+                                        "type": "net.noodl.formkit.radiobutton",
+                                        "x": 20,
+                                        "y": 46,
+                                        "parameters": {
+                                            "borderColor": "#006394",
+                                            "checkedBackgroundColor": "#EF8F45"
+                                        },
+                                        "ports": [],
+                                        "dynamicports": [],
+                                        "children": []
+                                    },
+                                    {
+                                        "id": "3423dc68-6804-3a12-3903-c08ea2a01d63",
+                                        "type": "net.noodl.formkit.radiobutton",
+                                        "x": 20,
+                                        "y": 92,
+                                        "parameters": {},
+                                        "ports": [],
+                                        "dynamicports": [],
+                                        "children": []
+                                    }
+                                ]
                             }
                         ]
                     }
@@ -4368,13 +4457,13 @@
             "metadata": {
                 "canvasPos": {
                     "x": 442.8506444563617,
-                    "y": 1.00893430822563
+                    "y": 2.0377271177577594
                 }
             }
         }
     ],
     "settings": {},
-    "rootNodeId": "e8570140-710c-df7f-2314-faa1656a4f9c",
+    "rootNodeId": "e88e41da-b00e-2f93-0d8a-9e6847933164",
     "version": "1",
     "metadata": {
         "dbCollections": [],

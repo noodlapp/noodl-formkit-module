@@ -1,9 +1,30 @@
 .ndl-formkit-checkbox {
     margin: 0;
+    border: 1px solid #000000;
+    border-radius: 2px;
+    background-color: transparent;
+    -webkit-appearance: none;
+    outline: none;
+}
+
+.ndl-formkit-checkbox:checked {
+    background-color: #000000;
 }
 
 .ndl-formkit-radiobutton {
     margin: 0;
+    border: 1px solid #000000;
+    border-radius: 16px;
+    background-color: transparent;
+    -webkit-appearance: none;
+    outline: none;
+    width:32px;
+    height:32px;
+    display: block;
+}
+
+.ndl-formkit-radiobutton:checked {
+    background-color: #000000;
 }
 
 .ndl-formkit-select {

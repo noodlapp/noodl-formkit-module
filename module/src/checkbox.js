@@ -6,6 +6,14 @@ import {
 	useState,
 } from 'react';
 
+function _styleTemplate(_class,props) {
+    return `
+    .${_class}:checked {
+        background-color: ${props.checkedBackgroundColor};
+    }  
+    `;
+}
+
 // --------------------------------------------------------------------------------------
 // CheckBox
 // --------------------------------------------------------------------------------------
@@ -26,7 +34,10 @@ function CheckBox(props) {
 			props.checkedChanged && props.checkedChanged(props.checked);
     }, [props.checked]);
 
-    return <input className="ndl-formkit-checkbox" type="checkbox" {...props} checked={checked} disabled={!props.enabled} 
+    const tagProps = {id:props.id,style:props.style};
+
+    Utils.updateStylesForClass("ndl-formkit-checkbox-"+props._nodeId,{checkedBackgroundColor:props.checkedBackgroundColor},_styleTemplate);
+    return <input className={"ndl-formkit-checkbox-"+props._nodeId + " ndl-formkit-checkbox"} type="checkbox" {...tagProps} checked={checked} disabled={!props.enabled} 
         onChange = {e => {
             setChecked(e.target.checked);
             props.checkedChanged && props.checkedChanged(e.target.checked);
@@ -47,6 +58,7 @@ var CheckBoxNode = {
         this.props.id = this.outputs.controlId = 'input-' + Utils.guid();
         this.props.enabled = this.outputs.enabled = (this.inputs.enabled===undefined)?true:this.inputs.enabled;
         this.props.checked = this.outputs.checked = (this.inputs.checked===undefined)?false:this.inputs.checked;
+        this.props._nodeId = this.id;
         this.props.checkedChanged = (checked) => {
             this.setOutputs({
                 checked:checked
@@ -87,9 +99,9 @@ var CheckBoxNode = {
 			type: {
 				name: "number",
 				units: ["%", "px", 'vw'],
-				defaultUnit: "%"
+				defaultUnit: "px"
 			},
-			default: 100,
+			default: 32,
 		},
 		height: {
 			index: 12,
@@ -98,11 +110,69 @@ var CheckBoxNode = {
 			type: {
 				name: "number",
 				units: ["%", "px", 'vh'],
-				defaultUnit: "%"
+				defaultUnit: "px"
 			},
-			default: 100
-		}
-	},
+			default: 32
+        },
+
+        // Styles
+        checkedBackgroundColor: {
+            displayName: 'Background color',
+            group: 'Checked Style',
+            type: {name:'color',allowEditOnly:true},
+            default: '#000000'
+        },
+    },
+    inputCss:{
+        // Border styles
+        borderRadius: {
+            index: 202,
+            displayName: 'Border Radius',
+            group: 'Style',
+            type: {
+                name: 'number',
+                units: ['px'],
+                defaultUnit: 'px'
+            },
+            default: 2,
+            applyDefault: false
+        },
+        borderStyle: {
+            index: 203,
+            displayName: 'Border Style',
+            group: 'Style',
+            type: {
+                name: 'enum',
+                enums: [
+                    {label: 'None', value: 'none'},
+                    {label: 'Solid', value: 'solid'},
+                    {label: 'Dotted', value: 'dotted'},
+                    {label: 'Dashed', value: 'dashed'}
+                ]
+            },
+            default: 'solid',
+            applyDefault: false
+        },
+        borderWidth: {
+            index: 204,
+            displayName: 'Border Width',
+            group: 'Style',
+            type: {
+                name: 'number',
+                units: ['px'],
+                defaultUnit: 'px'
+            },
+            default: 1,
+            applyDefault: false
+        },
+        borderColor: {
+            index: 205,
+            displayName: 'Border Color',
+            group: 'Style',
+            type: 'color',
+            default: '#000000'
+        }
+    },
 	outputProps: {
         focusChanged: {type: 'boolean', displayName: 'Focused', group:'States'},
         hoverChanged: {type: 'boolean', displayName: 'Hover', group:'States'},

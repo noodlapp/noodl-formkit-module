@@ -8,6 +8,14 @@ import {
     useContext,
 } from 'react';
 
+function _styleTemplate(_class,props) {
+    return `
+    .${_class}:checked {
+        background-color: ${props.checkedBackgroundColor};
+    }  
+    `;
+}
+
 // --------------------------------------------------------------------------------------
 // RadioButton
 // --------------------------------------------------------------------------------------
@@ -20,8 +28,12 @@ function RadioButton(props) {
         props.hoverChanged && props.hoverChanged(false);
     }, []);
 
+    const tagProps = {id:props.id,style:props.style};
+
     props.checkedChanged && props.checkedChanged(radioButtonGroup?(radioButtonGroup.selected === props.value):false);
-    return <input className="ndl-formkit-radiobutton" type="radio" name={radioButtonGroup?radioButtonGroup.name:undefined} {...props} disabled={!props.enabled} 
+
+    Utils.updateStylesForClass("ndl-formkit-radiobutton-"+props._nodeId,{checkedBackgroundColor:props.checkedBackgroundColor},_styleTemplate);
+    return <input className={"ndl-formkit-radiobutton-"+props._nodeId+" ndl-formkit-radiobutton"} type="radio" name={radioButtonGroup?radioButtonGroup.name:undefined} {...tagProps} disabled={!props.enabled} 
         checked={radioButtonGroup?(radioButtonGroup.selected === props.value):false}
         onChange = {e => {
             radioButtonGroup && radioButtonGroup.checkedChanged && radioButtonGroup.checkedChanged(props.value);
@@ -41,6 +53,7 @@ var RadioButtonNode = {
         this.props.sizeMode = 'explicit';
         this.props.id = this.outputs.controlId = 'input-' + Utils.guid();
         this.props.enabled = this.outputs.enabled = true;
+        this.props._nodeId = this.id;
         this.props.checkedChanged = (value) => {
             this.setOutputs({
                 checked:value
@@ -81,9 +94,9 @@ var RadioButtonNode = {
 			type: {
 				name: "number",
 				units: ["%", "px", 'vw'],
-				defaultUnit: "%"
+				defaultUnit: "px"
 			},
-			default: 100,
+			default: 32,
 		},
 		height: {
 			index: 12,
@@ -92,11 +105,69 @@ var RadioButtonNode = {
 			type: {
 				name: "number",
 				units: ["%", "px", 'vh'],
-				defaultUnit: "%"
+				defaultUnit: "px"
 			},
-			default: 100
-		}
-	},
+			default: 32
+        },
+        
+        // Styles
+        checkedBackgroundColor: {
+            displayName: 'Background color',
+            group: 'Checked Style',
+            type: {name:'color',allowEditOnly:true},
+            default: '#000000'
+        },
+    },
+    inputCss:{
+        // Border styles
+        borderRadius: {
+            index: 202,
+            displayName: 'Border Radius',
+            group: 'Style',
+            type: {
+                name: 'number',
+                units: ['px'],
+                defaultUnit: 'px'
+            },
+            default: 16,
+            applyDefault: false
+        },
+        borderStyle: {
+            index: 203,
+            displayName: 'Border Style',
+            group: 'Style',
+            type: {
+                name: 'enum',
+                enums: [
+                    {label: 'None', value: 'none'},
+                    {label: 'Solid', value: 'solid'},
+                    {label: 'Dotted', value: 'dotted'},
+                    {label: 'Dashed', value: 'dashed'}
+                ]
+            },
+            default: 'solid',
+            applyDefault: false
+        },
+        borderWidth: {
+            index: 204,
+            displayName: 'Border Width',
+            group: 'Style',
+            type: {
+                name: 'number',
+                units: ['px'],
+                defaultUnit: 'px'
+            },
+            default: 1,
+            applyDefault: false
+        },
+        borderColor: {
+            index: 205,
+            displayName: 'Border Color',
+            group: 'Style',
+            type: 'color',
+            default: '#000000'
+        }
+    },
 	outputProps: {
 		//checkedChanged: {type: 'boolean', displayName: 'Checked', group:'States'},
         focusChanged: {type: 'boolean', displayName: 'Focused', group:'States'},
