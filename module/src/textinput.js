@@ -156,11 +156,15 @@ var TextInputNode = {
 			type: 'string',
 			displayName: 'Text',
 			group:'General'
-		},
+        },
+        
+        // States
         focusChanged: {type: 'boolean', displayName: 'Is Focused', group:'States'},
+        hoverChanged: {type: 'boolean', displayName: 'Hover', group:'States'},
+
+        // Events
         onFocused: {type: 'signal', displayName: 'Focused', group:'Events'},
         onBlurred: {type: 'signal', displayName: 'Blurred', group:'Events'},
-        hoverChanged: {type: 'boolean', displayName: 'Hover', group:'States'}
 	},
 	frame:{
 		dimensions:{defaultSizeMode: 'contentSize', contentLabel: 'Text'},

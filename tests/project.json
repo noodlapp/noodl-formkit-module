@@ -83,6 +83,12 @@
                         "fromProperty": "Blurred",
                         "toId": "35a07866-90cb-aff7-985f-b70a96f6f8fa",
                         "toProperty": "enable-Name"
+                    },
+                    {
+                        "fromId": "f7eecd52-fef8-5de7-b419-b3c3c137e975",
+                        "fromProperty": "Blurred",
+                        "toId": "35a07866-90cb-aff7-985f-b70a96f6f8fa",
+                        "toProperty": "enable-Character"
                     }
                 ],
                 "roots": [
@@ -181,7 +187,7 @@
                                                 "id": "f7eecd52-fef8-5de7-b419-b3c3c137e975",
                                                 "type": "/#Form Kit/Options Field",
                                                 "x": 20,
-                                                "y": 194,
+                                                "y": 214,
                                                 "parameters": {
                                                     "Label": "An options selector"
                                                 },
@@ -1707,6 +1713,12 @@
                         "fromProperty": "controlId",
                         "toId": "9f568c83-9263-26ad-70ef-6e4ef86c9799",
                         "toProperty": "for"
+                    },
+                    {
+                        "fromId": "0682ec31-a8ff-3d02-e978-9bd87694ee5c",
+                        "fromProperty": "onBlurred",
+                        "toId": "4c1917dd-64ea-bca6-f760-c02a2d177f5e",
+                        "toProperty": "Blurred"
                     }
                 ],
                 "roots": [
@@ -1851,6 +1863,12 @@
                                 "plug": "input",
                                 "type": "*",
                                 "index": 0
+                            },
+                            {
+                                "name": "Blurred",
+                                "plug": "input",
+                                "type": "*",
+                                "index": 1
                             }
                         ],
                         "dynamicports": [],

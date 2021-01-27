@@ -42,8 +42,8 @@ function CheckBox(props) {
             setChecked(e.target.checked);
             props.checkedChanged && props.checkedChanged(e.target.checked);
         }}
-		onFocus={e => props.enabled && props.focusChanged && props.focusChanged(true)}
-        onBlur={e => props.enabled && props.focusChanged && props.focusChanged(false)}
+        onFocus={(e) => {props.enabled && props.focusChanged && props.focusChanged(true); props.enabled && props.onFocused && props.onFocused()}}
+        onBlur={(e) => {props.enabled && props.focusChanged && props.focusChanged(false); props.enabled && props.onBlurred && props.onBlurred()}}
         onMouseEnter={() => props.enabled && props.hoverChanged && props.hoverChanged(true)}
         onMouseLeave={() => props.enabled && props.hoverChanged && props.hoverChanged(false)}
         ></input>;
@@ -174,9 +174,14 @@ var CheckBoxNode = {
         }
     },
 	outputProps: {
-        focusChanged: {type: 'boolean', displayName: 'Focused', group:'States'},
+        // States
+        focusChanged: {type: 'boolean', displayName: 'Is Focused', group:'States'},
         hoverChanged: {type: 'boolean', displayName: 'Hover', group:'States'},
       //  checkedChanged: {type: 'boolean', displayName: 'Checked', group:'States'}
+
+      // Events
+      onFocused: {type: 'signal', displayName: 'Focused', group:'Events'},
+      onBlurred: {type: 'signal', displayName: 'Blurred', group:'Events'},
 	}
 }
 

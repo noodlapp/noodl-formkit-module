@@ -15,7 +15,8 @@ function Options(props) {
 	// Must update value output on both "mount" and when it's changed
 	useEffect(() => {
 		setValue(props.value);
-		props.valueChanged && props.valueChanged(props.value);
+        props.valueChanged && props.valueChanged(props.value);
+        props.focusChanged && props.focusChanged(false);
 	}, []);
 
 	useEffect(() => {
@@ -26,12 +27,9 @@ function Options(props) {
 	return <select className="ndl-formkit-select" {...props} disabled={!props.enabled} value={value} onChange = {e => {
 		setValue(e.target.value);
 		props.valueChanged && props.valueChanged(e.target.value);}}
-		onFocus={e => {
-			props.focusChanged && props.focusChanged(true);
-		}}
-		onBlur={e => {
-			props.focusChanged && props.focusChanged(false);
-		}}>
+        onFocus={(e) => {props.enabled && props.focusChanged && props.focusChanged(true); props.enabled && props.onFocused && props.onFocused()}}
+        onBlur={(e) => {props.enabled && props.focusChanged && props.focusChanged(false); props.enabled && props.onBlurred && props.onBlurred()}}
+        >
 			{
 				(props.items!==undefined)?props.items.map((i) => (<option value={i.Value} disabled={i.Disabled?true:undefined} selected={i.Selected?true:undefined}>{i.Label}</option>)):null
 			}
@@ -144,8 +142,14 @@ var OptionsNode = {
         }
 	},
 	outputProps: {
-		valueChanged:{type:'string',displayName:'Value',group:'General'},
-		focusChanged:{type:'boolean',displayName:'Focused',group:'General'}
+        valueChanged:{type:'string',displayName:'Value',group:'General'},
+        
+        // States
+        focusChanged:{type:'boolean',displayName:'Is Focused',group:'States'},
+        
+        // Events
+        onFocused: {type: 'signal', displayName: 'Focused', group:'Events'},
+        onBlurred: {type: 'signal', displayName: 'Blurred', group:'Events'},
 	}
 }
 Utils.addFontStyling(OptionsNode)
